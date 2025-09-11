@@ -134,13 +134,15 @@ const Beranda = ({ onBlogAdded }: BerandaProps) => {
             </li>
             <li>
               <label>Kategori</label>
-              <input
-                type="text"
-                name="kategori"
+              <select 
+                name="kategori" id=""
+                onChange={(e: ChangeEvent<HTMLSelectElement>) => setKategori(e.target.value)}
                 value={kategori}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => setKategori(e.target.value)}
-                required
-              />
+                required>
+                  <option value="berita">Berita</option>
+                  <option value="artikel">Artikel</option>
+                  <option value="program">Program</option>
+              </select>
             </li>
             <li>
               <label>Paragraf</label>
