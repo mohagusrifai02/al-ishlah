@@ -1,9 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 export default function Navbar(){
+    const [isOpen, setIsOpen] = useState(false);
+    const menuOpen = ()=>{
+        setIsOpen(!isOpen);
+    }
+    const closeMenu = ()=>{
+        setIsOpen(false);
+    }
     return(
         <>
             <nav>
@@ -17,9 +27,9 @@ export default function Navbar(){
                         />
                         <h4>Yayasan Al-Ishlah</h4>
                     </div>
-                    <FontAwesomeIcon icon={faBars} className="bars" />
+                    <FontAwesomeIcon icon={isOpen ? faTimes : faBars} className="bars" onClick={menuOpen} />
                 </div>
-                <ul className="list">
+                <ul className={`list ${isOpen ? 'open':''}`} onClick={closeMenu}>
                     <li>
                         <Link href='/'>home</Link>
                     </li>
