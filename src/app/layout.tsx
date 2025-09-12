@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName:"Yayasan Al-Ishlah",
     images:[
       {
-        url:'/logo.jpeg',
+        url:'/kantor.jpg',
         width:800,
         height:600,
       }
