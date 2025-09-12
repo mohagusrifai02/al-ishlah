@@ -5,6 +5,7 @@ import axios from "axios"
 import Link from "next/link"
 import { useParams } from "next/navigation";
 import Pagination from "./pagination";
+import Image from "next/image";
 
 type Blog ={
     id:number;
@@ -49,6 +50,16 @@ export default function Blog(){
 
     return (
         <>  
+            <div className="title-blog">
+                <h2>Portal Berita</h2>
+                <div className="sub-deskripsi">
+                    <Image src="/aguspemuda.png" alt="profile" width={100} height={100} className="img" />
+                    <div className="deskripsi-title">
+                        <h4>Moh agus rifai</h4>
+                        <h4>Author</h4>
+                    </div>
+                </div>
+            </div>
             <div className='container_blog'>
                 <ul className="blog-utama">
                     {items.map((item)=>(

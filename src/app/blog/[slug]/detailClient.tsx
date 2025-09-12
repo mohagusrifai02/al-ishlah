@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import Pagination from "../pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp, faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import Image from "next/image";
 
 type Detail ={
     id:number;
@@ -58,8 +59,11 @@ const Detail = ()=>{
                     <li className="title">
                         <h2>{ blog.judul }</h2>
                         <div className="sub-deskripsi">
-                            <h4>{ blog.kategori }</h4>
-                            <h4>Written by moh agus rifai</h4>
+                            <Image src="/aguspemuda.png" alt="profile" width={100} height={100} className="img" />
+                            <div className="deskripsi-title">
+                                <h4>Written by moh agus rifai</h4>
+                                <h4>Category: { blog.kategori }</h4>
+                            </div>
                         </div>
                     </li>
                     <li>
