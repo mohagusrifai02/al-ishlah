@@ -20,7 +20,20 @@ export const metadata: Metadata = {
   title: "Yayasan Al-Ishlah",
   description: "Official Website Yayasan Al-Ishlah Hidayatullah Kabupaten Tegal",
   icons:{
-    icon:'logo.jpeg'
+    icon:'/logo.jpeg'
+  },
+  openGraph:{
+    title:"Yayasan Al-Ishlah",
+    description:"Official Website Yayasan Al-Ishlah Hidayatullah Kabupaten Tegal",
+    url:"https://al-ishlah-tau.vercel.app",
+    siteName:"Yayasan Al-Ishlah",
+    images:[
+      {
+        url:'/hafiz.png',
+        width:800,
+        height:600,
+      }
+    ]
   }
 };
 
