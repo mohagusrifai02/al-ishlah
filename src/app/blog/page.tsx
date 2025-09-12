@@ -6,6 +6,7 @@ import Link from "next/link"
 import { useParams } from "next/navigation";
 import Pagination from "./pagination";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 type Blog ={
     id:number;
@@ -51,14 +52,24 @@ export default function Blog(){
     return (
         <>  
             <div className="title-blog">
-                <h2>Portal Berita</h2>
-                <div className="sub-deskripsi">
+                <motion.h2
+                    initial={{ opacity:0, x:-50 }}
+                    whileInView={{ opacity:1, x:0 }}
+                    transition={{ duration:0.6 }}
+                    viewport={{ amount: 0.4, once:false }}
+                >Portal Berita</motion.h2>
+                <motion.div 
+                    className="sub-deskripsi"
+                    initial={{ opacity:0, y:50 }}
+                    whileInView={{ opacity:1, y:0 }}
+                    transition={{ duration:0.6 }}
+                    viewport={{ amount:0.4, once:false }}>
                     <Image src="/aguspemuda.png" alt="profile" width={100} height={100} className="img" />
                     <div className="deskripsi-title">
                         <h4>Moh agus rifai</h4>
                         <h4>Author</h4>
                     </div>
-                </div>
+                </motion.div>
             </div>
             <div className='container_blog'>
                 <ul className="blog-utama">

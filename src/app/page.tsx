@@ -2,9 +2,14 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import About from "./about/page";
+import Program from "./program/page";
+import Blog from "./blog/page";
+import Kontak from "./kontak/page";
 
 export default function Home() {
   return (
+    <>
     <div className="container_home">
             <motion.div 
                 className="gambar"
@@ -34,6 +39,11 @@ export default function Home() {
                 </div>
                 <h3>Membangun Generasi Berkarakter, Mengubah Masa Depan Bangsa.</h3>
             </motion.div>
-           </div>
+        </div>
+        <About />
+        <Program />
+        <Blog />
+        <Kontak />
+    </>
   );
 }
