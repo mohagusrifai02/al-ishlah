@@ -21,6 +21,7 @@ export default function Blog(){
     const {slug} = useParams();
     const [currentPage, setCurrentPage]= useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const [currentSlide, setCurrenSlide] = useState(0);
 
     useEffect(()=>{
         fetchBlog();
@@ -30,6 +31,13 @@ export default function Blog(){
         fetchItem();
     },[currentPage]);
     
+    useEffect(()=>{
+        const interval = setInterval(()=>{
+            setCurrenSlide((prev)=>(prev + 1) % items.length);
+        }, 3000);
+        return ()=> clearInterval(interval);
+    }, [items]);
+
     const fetchBlog = async()=>{
         try {
             const response = await axios.get(`https://api-alishlah-production.up.railway.app/api/auth/dashboard?page=${currentPage}&limit=4`);
@@ -38,6 +46,14 @@ export default function Blog(){
         } catch (error) {
             console.error('error mengambil data', error);
         }
+    }
+
+    const nextSlide = ()=>{
+        setCurrenSlide((prev)=>(prev + 1) % items.length);
+    }
+
+    const prevSlide = ()=>{
+        setCurrenSlide((prev)=>(prev - 1 + items.length) % items.length);
     }
 
     const fetchItem = async()=>{
@@ -76,13 +92,18 @@ export default function Blog(){
                     {items.map((item)=>(
                         <li key={item.id}>
                             <Link href={`blog/${item.slug}`}>
-                                <img src={`https://api-alishlah-production.up.railway.app/gmb/${item.gambar}`} alt="" width='200px' height="200px" />
-                                <div className="deskripsi">
+                                <img src={`https://api-alishlah-production.up.railway.app/gmb/${item.gambar}`} alt="" width='200px' height="200px" 
+                                 style={{ transform:`translateX(-${currentSlide * 670}px)` }}/>
+                                <div className="deskripsi"  style={{ transform:`translateX(-${currentSlide * 670}px)` }}>
                                     <h3>{item.judul}</h3>
                                 </div>
                             </Link>
                         </li>
                     ))}
+                    <div className="slider-controls">
+                        <button onClick={nextSlide}>&laquo;</button>
+                        <button onClick={prevSlide}>&raquo;</button>
+                    </div>
                 </ul>
                 <div className="box">
                     <ul className="daftar-blog">
