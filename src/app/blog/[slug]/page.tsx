@@ -9,8 +9,10 @@ export async function generateMetadata({params} : {params: {slug: string}}): Pro
 
     return{
         title:blog.judul,
+        description:'written by humas yayasan',
         openGraph:{
             title:blog.judul,
+            description:'written by humas yayasan',
             images:[
                 {
                     url : `https://api-alishlah-production.up.railway.app/gmb/${blog.gambar}`
