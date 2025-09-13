@@ -31,6 +31,7 @@ const Beranda = ({ onBlogAdded }: BerandaProps) => {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
+  const [waLinks, setWaLinks] = useState<string[]>([]);
 
   const handleEdit = (blog: Blog) => {
     setJudul(blog.judul);
@@ -65,6 +66,19 @@ const Beranda = ({ onBlogAdded }: BerandaProps) => {
           { headers: { 'Content-Type': 'multipart/form-data' } }
         );
         setPesan('Blog berhasil ditambahkan');
+
+        //kirim whatsapp
+        const slug = judul.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+        const blogUrl = `https://al-ishlah-tau.vercel.app/blog/${slug}`;
+        const message = `halo, saya baru saja memposting blog baru berjudul "${judul}"` +`. silahkan baca di ${blogUrl}`;
+        const agus = '6289516589293';
+        const murni = '6287785945412';
+        const numbers = [agus, murni];
+
+        const links = numbers.map((num)=>{
+          return `https://wa.me/${num}?text=${encodeURIComponent(message)}`;
+        });
+        setWaLinks(links);
       }
 
       setJudul('');
@@ -118,112 +132,129 @@ const Beranda = ({ onBlogAdded }: BerandaProps) => {
 
   return (
     <ProtectedRoute>
-    <div className="container_dashboard">
-      <div className="form-input">
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
-          <ul>
-            <li>
-              <label>Judul</label>
-              <input
-                type="text"
-                name="judul"
-                value={judul}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => setJudul(e.target.value)}
-                required
-              />
-            </li>
-            <li>
-              <label>Kategori</label>
-              <select 
-                name="kategori" id=""
-                onChange={(e: ChangeEvent<HTMLSelectElement>) => setKategori(e.target.value)}
-                value={kategori}
-                required>
-                  <option value="berita">Berita</option>
-                  <option value="artikel">Artikel</option>
-                  <option value="program">Program</option>
-              </select>
-            </li>
-            <li>
-              <label>Paragraf</label>
-              <textarea
-                name="paragraf"
-                cols={30}
-                rows={10}
-                value={paragraf}
-                onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setParagraf(e.target.value)}
-                required
-              ></textarea>
-            </li>
-            <li>
-              <label>Gambar</label>
-              <input
-                type="file"
-                name="gambar"
-                accept="image/*"
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setGambar(e.target.files ? e.target.files[0] : null)
-                }
-                required
-              />
-            </li>
-            <li>
-              <button type="submit">{editMode ? 'Update' : 'Post'}</button>
-            </li>
-          </ul>
-        </form>
-        {pesan && <p>{pesan}</p>}
-      </div>
-
-      <div className="blog-dashboard">
-        <button onClick={handleLogout}>Logout</button>
-        <table border={0} cellPadding={10} cellSpacing={0}>
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Gambar</th>
-              <th>Judul</th>
-              <th>Kategori</th>
-              <th colSpan={2}>Sunting</th>
-            </tr>
-          </thead>
-          <tbody>
-            {blogs.map((blog) => (
-              <tr key={blog.id}>
-                <td>{blog.id}</td>
-                <td className="gambar">
-                  <img
-                    src={`https://api-alishlah-production.up.railway.app/gmb/${blog.gambar}`}
-                    width="50"
-                    height="50"
-                    alt="thumbnail"
+      <div className="container_dashboard">
+        <div className="form-input">
+          <form onSubmit={handleSubmit} encType="multipart/form-data">
+            <ul>
+              <li>
+                <label>Judul</label>
+                <input
+                  type="text"
+                  name="judul"
+                  value={judul}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => setJudul(e.target.value)}
+                  required
+                />
+              </li>
+              <li>
+                <label>Kategori</label>
+                <select 
+                  name="kategori" id=""
+                  onChange={(e: ChangeEvent<HTMLSelectElement>) => setKategori(e.target.value)}
+                  value={kategori}
+                  required>
+                    <option value="">Pilih Kategori</option>
+                    <option value="artikel">Artikel</option>
+                    <option value="program">Program</option>
+                    <option value="berita">Berita</option>
+                </select>
+              </li>
+              <li>
+                <label>Paragraf</label>
+                <textarea
+                  name="paragraf"
+                  cols={30}
+                  rows={10}
+                  value={paragraf}
+                  onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setParagraf(e.target.value)}
+                  required
+                ></textarea>
+              </li>
+              <li>
+                <label>Gambar</label>
+                <input
+                  type="file"
+                  name="gambar"
+                  accept="image/*"
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setGambar(e.target.files ? e.target.files[0] : null)
+                  }
+                  required
+                />
+              </li>
+              <li>
+                <button type="submit">{editMode ? 'Update' : 'Post'}</button>
+              </li>
+            </ul>
+          </form>
+        </div>
+        <div className="blog-dashboard">
+          <button onClick={handleLogout}>Logout</button>
+          <div className="pesan">
+            {pesan && <p>{pesan}</p>}
+            {waLinks.length > 0 && (
+            <div style={{ marginTop:'1rem'}}>
+              <p>Broadcast ke whatsapp</p>
+              <ul>
+                {waLinks.map((link, index) => (
+                  <li key={index}>
+                    <a href={link} target="_blank" rel="noopener noreferrer">
+                      Kirim ke {link.split('/')[3].split('?')[0]};
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            )}
+          </div>
+          <table border={0} cellPadding={10} cellSpacing={0}>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Gambar</th>
+                <th>Judul</th>
+                <th>Kategori</th>
+                <th colSpan={2}>Sunting</th>
+              </tr>
+            </thead>
+            <tbody>
+              {blogs.map((blog) => (
+                <tr key={blog.id}>
+                  <td>{blog.id}</td>
+                  <td className="gambar">
+                    <img
+                      src={`https://api-alishlah-production.up.railway.app/gmb/${blog.gambar}`}
+                      width="50"
+                      height="50"
+                      alt="thumbnail"
+                    />
+                  </td>
+                  <td>{blog.judul}</td>
+                  <td>{blog.kategori}</td>
+                  <td>
+                    <button onClick={() => hapusBlog(blog.id)}>Hapus</button>
+                  </td>
+                  <td>
+                    <button onClick={() => handleEdit(blog)}>Edit</button>
+                  </td>
+                </tr>
+              ))}
+              <tr>
+                <td colSpan={6}>
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={(page: number) => setCurrentPage(page)}
                   />
                 </td>
-                <td>{blog.judul}</td>
-                <td>{blog.kategori}</td>
-                <td>
-                  <button onClick={() => hapusBlog(blog.id)}>Hapus</button>
-                </td>
-                <td>
-                  <button onClick={() => handleEdit(blog)}>Edit</button>
-                </td>
               </tr>
-            ))}
-            <tr>
-              <td colSpan={6}>
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={(page: number) => setCurrentPage(page)}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  </ProtectedRoute>
+    </ProtectedRoute>
+
   );
-};
+}
 
 export default Beranda;
