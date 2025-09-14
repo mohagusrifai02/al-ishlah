@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { AnimatedCounter, SantriPutra, SantriPutri, PengurusPutra, PengurusPutri } from '@/components/AnimatedCounter';
 
 const About =()=>{
     return (
@@ -40,6 +41,80 @@ const About =()=>{
                     </div>
                 </motion.div>
             </motion.div>
+            <div className="jumlah">
+                <div className="santri semua">
+                    <div className="img">
+                        <Image 
+                            src="/anakmuslim.png"
+                            alt="semuasantriputra"
+                            width={100}
+                            height={100}
+                        />
+                        <Image 
+                            src="/anakmuslimah.png"
+                            alt="semuasantriputri"
+                            width={100}
+                            height={100}
+                        />
+                    </div>
+                    <div className="deskripsi">
+                        <h2>Jumlah Santri</h2>
+                        <AnimatedCounter />
+                    </div>
+                </div>
+                <div className="santri putra">
+                    <Image 
+                    className='img'
+                        src="/anakmuslim.png"
+                        alt="santriputra"
+                        width={100}
+                        height={100}
+                    />
+                    <div className="deskripsi">
+                        <h2>Santri Putra</h2>
+                        <SantriPutra />
+                    </div>
+                </div>
+                <div className="santri putri">
+                    <Image 
+                        className='img'
+                        src="/anakmuslimah.png"
+                        alt="santriputri"
+                        width={100}
+                        height={100}
+                    />
+                    <div className="deskripsi">
+                        <h2>Santri Putri</h2>
+                        <SantriPutri />
+                    </div>
+                </div>
+                <div className="santri pengurus-putra">
+                    <Image 
+                        className='img'
+                        src="/muslim.png"
+                        alt="pengurusputra"
+                        width={100}
+                        height={100}
+                    />
+                    <div className="deskripsi">
+                        <h2>Pengurus Putra</h2>
+                        <PengurusPutra />
+                    </div>
+                </div>
+                <div className="santri pengurus-putri">
+                    <Image 
+                        className='img'
+                        src="/muslimah.png"
+                        alt="pengurusputri"
+                        width={100}
+                        height={100}
+                    />
+                    <div className="deskripsi">
+                        <h2>Pengurus Putri</h2>
+                        <PengurusPutri />
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
