@@ -42,7 +42,12 @@ const About =()=>{
                 </motion.div>
             </motion.div>
             <div className="jumlah">
-                <div className="santri semua">
+                <motion.div 
+                    initial= {{opacity:0, scale:0.8}}
+                    whileInView = {{ opacity:1, scale:1 }}
+                    transition = {{ duration:0.6}}
+                    viewport= {{ amount:0.4, once:false}}
+                    className="santri semua">
                     <div className="img">
                         <Image 
                             src="/anakmuslim.png"
@@ -61,8 +66,13 @@ const About =()=>{
                         <h2>Jumlah Santri</h2>
                         <AnimatedCounter />
                     </div>
-                </div>
-                <div className="santri putra">
+                </motion.div>
+                <motion.div 
+                    initial= {{opacity:0, scale:0.8}}
+                    whileInView = {{ opacity:1, scale:1 }}
+                    transition = {{ duration:0.6}}
+                    viewport= {{ amount:0.4, once:false}}
+                    className="santri putra">
                     <Image 
                     className='img'
                         src="/anakmuslim.png"
@@ -74,8 +84,13 @@ const About =()=>{
                         <h2>Santri Putra</h2>
                         <SantriPutra />
                     </div>
-                </div>
-                <div className="santri putri">
+                </motion.div>
+                <motion.div 
+                    initial= {{opacity:0, scale:0.8}}
+                    whileInView = {{ opacity:1, scale:1 }}
+                    transition = {{ duration:0.6}}
+                    viewport= {{ amount:0.4, once:false}}
+                    className="santri putri">
                     <Image 
                         className='img'
                         src="/anakmuslimah.png"
@@ -87,8 +102,13 @@ const About =()=>{
                         <h2>Santri Putri</h2>
                         <SantriPutri />
                     </div>
-                </div>
-                <div className="santri pengurus-putra">
+                </motion.div>
+                <motion.div 
+                    initial= {{opacity:0, scale:0.8}}
+                    whileInView = {{ opacity:1, scale:1 }}
+                    transition = {{ duration:0.6}}
+                    viewport= {{ amount:0.4, once:false}}
+                    className="santri pengurus-putra">
                     <Image 
                         className='img'
                         src="/muslim.png"
@@ -100,8 +120,13 @@ const About =()=>{
                         <h2>Pengurus Putra</h2>
                         <PengurusPutra />
                     </div>
-                </div>
-                <div className="santri pengurus-putri">
+                </motion.div>
+                <motion.div 
+                    initial= {{opacity:0, scale:0.8}}
+                    whileInView = {{ opacity:1, scale:1 }}
+                    transition = {{ duration:0.6}}
+                    viewport= {{ amount:0.4, once:false}}
+                    className="santri pengurus-putri">
                     <Image 
                         className='img'
                         src="/muslimah.png"
@@ -113,7 +138,7 @@ const About =()=>{
                         <h2>Pengurus Putri</h2>
                         <PengurusPutri />
                     </div>
-                </div>
+                </motion.div>
             </div>
         </>
     )

@@ -1,7 +1,7 @@
 import { useCounter } from "@/hooks/useCounter";
 
 export  function AnimatedCounter() {
-    const count = useCounter({ target:45, duration:8500});
+    const count = useCounter({ target:45, duration:10000});
 
     return (
         <div className="animated-counter" style={{ fontSize:'100px', fontWeight:'700' }}>
@@ -11,7 +11,7 @@ export  function AnimatedCounter() {
 }
 
 export function SantriPutra(){
-    const count = useCounter({ target:25, duration:8500});
+    const count = useCounter({ target:25, duration:10000});
 
     return (
         <div className="santriputra" style={{ fontSize:'100px', fontWeight:'700' }}>
@@ -20,7 +20,7 @@ export function SantriPutra(){
     )
 }
 export function SantriPutri(){
-    const count = useCounter({ target:20, duration:8500});
+    const count = useCounter({ target:20, duration:10000});
 
     return (
         <div className="santriputri" style={{ fontSize:'100px', fontWeight:'700' }}>
@@ -29,7 +29,7 @@ export function SantriPutri(){
     )
 }
 export function PengurusPutra(){
-    const count = useCounter({ target:10, duration:8500});
+    const count = useCounter({ target:10, duration:10000});
 
     return (
         <div className="pengurusputra" style={{ fontSize:'100px', fontWeight:'700' }}>
@@ -38,7 +38,7 @@ export function PengurusPutra(){
     )
 }
 export function PengurusPutri(){
-    const count = useCounter({ target:5, duration:8500});
+    const count = useCounter({ target:5, duration:10000});
 
     return (
         <div className="pengurusputri" style={{ fontSize:'100px', fontWeight:'700' }}>
