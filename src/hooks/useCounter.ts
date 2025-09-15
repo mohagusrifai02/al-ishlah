@@ -4,12 +4,15 @@ interface CounterOptions{
     target: number;
     duration?:number;
     interval?:number;
+    start?:boolean;
 }
 
-export function useCounter({target, duration=1000, interval=100}: CounterOptions){
+export function useCounter({target, duration=1000, interval=100, start=false}: CounterOptions){
     const [count, setCount] = useState(0);
 
     useEffect(()=>{
+        if(!start) return;
+
         let current = 0;
         const step = (target / (duration / interval));
 
@@ -24,7 +27,7 @@ export function useCounter({target, duration=1000, interval=100}: CounterOptions
         }, interval);
 
         return () => clearInterval(timer);
-    }, [target, duration, interval]);
+    }, [start, target, duration, interval]);
 
     return count;
 }

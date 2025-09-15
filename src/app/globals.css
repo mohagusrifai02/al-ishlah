@@ -43,9 +43,10 @@ nav{
     padding: 10px;
     position: fixed;
     z-index: 1000;
-    background-color: salmon;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #213547;
     align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 nav .judul{
     display: flex;
@@ -83,7 +84,7 @@ nav ul li{
 }
 nav ul li a{
     text-decoration: none;
-    color: #ffffff;
+    color: #213547;
 }
 /* akhir navbar */
 
