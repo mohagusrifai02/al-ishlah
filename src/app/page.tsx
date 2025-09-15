@@ -11,6 +11,7 @@ export default function Home() {
   return (
     <>
     <div className="container_home">
+      <div className="overlay"></div>
             <motion.div 
                 className="gambar"
                 initial={{ opacity:0, y:50 }}
@@ -39,7 +40,7 @@ export default function Home() {
                 </div>
                 <h3>Membangun Generasi Berkarakter, Mengubah Masa Depan Bangsa.</h3>
             </motion.div>
-        </div>
+    </div>
         <About />
         <Program />
         <Blog />

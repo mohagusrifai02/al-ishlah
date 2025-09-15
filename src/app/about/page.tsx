@@ -17,7 +17,7 @@ const About =()=>{
                 <div className="gambar">
                     <div className="lingkaran"></div>
                     <Image 
-                        src='/aguspemuda.png'
+                        src='/mbakmbak.jpg'
                         alt='about'
                         width={200}
                         height={200}
