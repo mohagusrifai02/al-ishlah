@@ -25,7 +25,10 @@ export default function Navbar(){
                             width={50}
                             height={50}
                         />
-                        <h4>Yayasan Al-Ishlah</h4>
+                        <div className="garis">
+                            <h4>Pesantren Al-Ishlah</h4>
+                            <p>TK dan SD IT Hidayatullah</p>
+                        </div>
                     </div>
                     <FontAwesomeIcon icon={isOpen ? faTimes : faBars} className="bars" onClick={menuOpen} />
                 </div>
