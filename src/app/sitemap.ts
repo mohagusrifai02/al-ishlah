@@ -1,17 +1,15 @@
-import { getServerSideSitemap } from 'next-sitemap'
+// app/sitemap.ts
+import type { MetadataRoute } from 'next'
 
-export async function GET() {
-  const urls = [
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
     {
-      loc: 'https://www.alishlahtegal.net/',
-      lastmod: new Date().toISOString(),
+      url: 'https://www.alishlahtegal.net/',
+      lastModified: new Date(),
     },
     {
-      loc: 'https://www.alishlahtegal.net/blog',
-      lastmod: new Date().toISOString(),
+      url: 'https://www.alishlahtegal.net/blog',
+      lastModified: new Date(),
     },
-    // Tambahkan URL lain sesuai kebutuhan
   ]
-
-  return getServerSideSitemap(urls)
 }
