@@ -3,8 +3,10 @@ import Detail from "./detailClient";
 
 export async function generateMetadata({params} : {params: {slug: string}}): Promise<Metadata>{
     try {
-         const { slug } = params;
-        const res = await fetch(`https://api-alishlah-production.up.railway.app/api/auth/dashboard/${slug}`);
+         const { slug } = await params;
+        const res = await fetch(`https://api-alishlah-production.up.railway.app/api/auth/dashboard/${slug}`,
+        { next: { revalidate: 10 } }
+        );
         const blog = await res.json();
 
     return{

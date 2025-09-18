@@ -84,7 +84,7 @@ const Detail = ()=>{
                         <p>source : { blog.gambar }</p>
                     </li>
                     <li>
-                        <p>{ blog.paragraf }</p>
+                        <p dangerouslySetInnerHTML={{ __html: blog.paragraf.replace(/\n/g, "<br />") }} />
                     </li>
                 </ul>
                 )}

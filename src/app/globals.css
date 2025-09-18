@@ -520,6 +520,7 @@ nav ul li a{
 .container_detail .blog-single li{
     list-style: none;
 }
+
 .container_detail .blog-single li ul {
     display: flex;
     gap: 10px;
