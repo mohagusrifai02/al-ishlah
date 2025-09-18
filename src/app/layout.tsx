@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "Yayasan Al-Ishlah",
   description: "Official Website Yayasan Al-Ishlah Hidayatullah Kabupaten Tegal",
   icons:{
-    icon:'/logo.jpeg'
+    icon:'/logo.ico'
   },
   openGraph:{
     title:"Yayasan Al-Ishlah",
