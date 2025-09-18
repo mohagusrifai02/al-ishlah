@@ -422,7 +422,16 @@ nav ul li a{
     align-items: center;
     flex-wrap: wrap;
     margin-top: 100px;
-
+}
+.container_blog .box h1{
+    width: 80%;
+    height: 10vh;
+    display: flex;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #0F5132;
 }
 .container_blog .box .daftar-blog{
     width: 100%;
@@ -526,12 +535,13 @@ nav ul li a{
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
+    align-items: flex-start;
 }
 .container_detail .blog-single{
     width: 50%;
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 70px;
     padding: 20px 0;
 }
 
@@ -604,6 +614,16 @@ nav ul li a{
     flex-wrap: wrap;
     margin-top: 100px;
 
+}
+.container_detail .blog-detail h1{
+    width: 80%;
+    height: 10vh;
+    display: flex;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #0F5132;
 }
 .container_detail .blog-detail .daftar-blog{
     width: 100%;
@@ -942,12 +962,17 @@ nav ul li a{
     }
     .container_blog .blog-utama{
         width: 100%;
+        height: 50vh;
     }
     .container_blog .box{
         width: 100%;
     }
+    .container_blog .box h1{
+        width: 100%;
+    }
     .container_blog .box .daftar-blog li{
-        width: 70%;
+        width: 100%;
+        height: 50vh;
     }
     .container_blog .box li a .deskripsi h3{
         font-size: 15px;
@@ -961,6 +986,7 @@ nav ul li a{
     }
     .container_detail .blog-single{
         width: 100%;
+        margin-top: 10px;
     }
     .container_detail .blog-detail{
         width: 100%;

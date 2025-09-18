@@ -106,6 +106,7 @@ export default function Blog(){
                     </div>
                 </ul>
                 <div className="box">
+                    <h1>All Post</h1>
                     <ul className="daftar-blog">
                         {blogs.map((blog)=>(
                             <li key={blog.id}>

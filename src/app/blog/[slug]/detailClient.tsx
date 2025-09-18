@@ -89,6 +89,7 @@ const Detail = ()=>{
                 </ul>
                 )}
                 <div className="blog-detail">
+                    <h1>All Post</h1>
                     <ul className="daftar-blog">
                         {blogs.map(blog=>(
                             <li key={blog.id}>
