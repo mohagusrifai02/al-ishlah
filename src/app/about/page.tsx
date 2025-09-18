@@ -47,17 +47,11 @@ const About =()=>{
                     whileInView = {{ opacity:1, scale:1 }}
                     transition = {{ duration:0.6}}
                     viewport= {{ amount:0.4, once:false}}
-                    className="santri semua">
+                    className="santri putra">
                     <div className="img">
                         <Image 
                             src="/anakmuslim.png"
                             alt="semuasantriputra"
-                            width={100}
-                            height={100}
-                        />
-                        <Image 
-                            src="/anakmuslimah.png"
-                            alt="semuasantriputri"
                             width={100}
                             height={100}
                         />
