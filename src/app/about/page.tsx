@@ -14,32 +14,38 @@ const About =()=>{
                 transition={{ duration:0.6 }}
                 viewport={{ amount:0.4, once:false }}
             >
-                <div className="gambar">
-                    <div className="lingkaran"></div>
-                    <Image 
-                        src='/mbakmbak.jpg'
-                        alt='about'
-                        width={200}
-                        height={200}
-                    />
+                <div className="book">
+                    <div className="cover">
+                        <h1>Mukaddimah book</h1>
+                        <Image 
+                            src='/logo.jpeg'
+                            alt='logo'
+                            width={200}
+                            height={200}
+                        />
                     </div>
-                <motion.div 
-                    className="deskripsi"
-                    initial={{ opacity:0, x:-50 }}
-                    whileInView={{ opacity:1, x:0 }}
-                    transition={{ duration:0.6 }}
-                    viewport={{ amount:0.4, once:false }}
-                >
-                    <div className="title">
-                        <h1>About Us</h1>
-                        <h3>Yayasan Al-Ishlah</h3>
+                    <div className="page"></div>
+                    <div className="page"></div>
+                    <div className="page"></div>
+                    <div className="page"></div>
+                    <div className="page img-page">
+                        <Image 
+                            className='img'
+                            src='/mbakmbak.jpg'
+                            alt='mbak'
+                            width={150}
+                            height={150}
+                        />
                     </div>
-                    <h3>Yayasan Al-Ishlah bergerak di bidang pendidikan, dakwah, dan sosial, berfokus pada pembinaan generasi berakhlak serta kepedulian terhadap anak yatim, piatu, dan dhuafa melalui program berkelanjutan.</h3>
-                    <div className="ttd">
-                        <h4>Moh Agus Rifai</h4>
-                        <p>Humas Yayasan Ai-Ishlah</p>
+                    <div className="last-page">
+                        <div className="title">
+                            <h1>About Us</h1>
+                            <h3>Yayasan Al-Ishlah</h3>
+                        </div>
+                        <h3>Yayasan Al-Ishlah bergerak di bidang pendidikan, dakwah, dan sosial, berfokus pada pembinaan generasi berakhlak serta kepedulian terhadap anak yatim, piatu, dan dhuafa melalui program berkelanjutan.</h3>
                     </div>
-                </motion.div>
+                    <div className="back-cover"></div>
+                </div>
             </motion.div>
             <div className="title">
                 <h1>Statistik dan Pendidikan</h1>
