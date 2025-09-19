@@ -41,6 +41,9 @@ const About =()=>{
                     </div>
                 </motion.div>
             </motion.div>
+            <div className="title">
+                <h1>Statistik dan Pendidikan</h1>
+            </div>
             <div className="jumlah">
                 <motion.div 
                     initial= {{opacity:0, scale:0.8}}
@@ -48,18 +51,36 @@ const About =()=>{
                     transition = {{ duration:0.6}}
                     viewport= {{ amount:0.4, once:false}}
                     className="santri putra">
-                    <div className="img">
+                    <div className="card-santri">
                         <Image 
                             src="/anakmuslim.png"
                             alt="semuasantriputra"
                             width={100}
                             height={100}
                         />
+                        <div className="deskripsi">
+                            <h2>Jumlah Santri</h2>
+                            <AnimatedCounter />
+                        </div>
                     </div>
-                    <div className="deskripsi">
-                        <h2>Jumlah Santri</h2>
-                        <AnimatedCounter />
-                    </div>
+                    <ul className="card-sekolah">
+                        <li>
+                            <h3>TK</h3>
+                            <span>5</span>
+                        </li>
+                        <li>
+                            <h3>SD</h3>
+                            <span>20</span>
+                        </li>
+                        <li>
+                            <h3>SMP</h3>
+                            <span>10</span>
+                        </li>
+                        <li>
+                            <h3>SMA</h3>
+                            <span>5</span>
+                        </li>
+                    </ul>
                 </motion.div>
                 <motion.div 
                     initial= {{opacity:0, scale:0.8}}
@@ -67,17 +88,36 @@ const About =()=>{
                     transition = {{ duration:0.6}}
                     viewport= {{ amount:0.4, once:false}}
                     className="santri putra">
-                    <Image 
-                    className='img'
-                        src="/anakmuslim.png"
-                        alt="santriputra"
-                        width={100}
-                        height={100}
-                    />
-                    <div className="deskripsi">
-                        <h2>Santri Putra</h2>
-                        <SantriPutra />
+                    <div className="card-santri">
+                        <Image 
+                            src="/anakmuslim.png"
+                            alt="santriputra"
+                            width={100}
+                            height={100}
+                        />
+                        <div className="deskripsi">
+                            <h2>Santriwan</h2>
+                            <SantriPutra />
+                        </div>
                     </div>
+                    <ul className="card-sekolah">
+                        <li>
+                            <h3>TK</h3>
+                            <span>2</span>
+                        </li>
+                        <li>
+                            <h3>SD</h3>
+                            <span>10</span>
+                        </li>
+                        <li>
+                            <h3>SMP</h3>
+                            <span>7</span>
+                        </li>
+                        <li>
+                            <h3>SMA</h3>
+                            <span>1</span>
+                        </li>
+                    </ul>
                 </motion.div>
                 <motion.div 
                     initial= {{opacity:0, scale:0.8}}
@@ -85,17 +125,36 @@ const About =()=>{
                     transition = {{ duration:0.6}}
                     viewport= {{ amount:0.4, once:false}}
                     className="santri putri">
-                    <Image 
-                        className='img'
-                        src="/anakmuslimah.png"
-                        alt="santriputri"
-                        width={100}
-                        height={100}
-                    />
-                    <div className="deskripsi">
-                        <h2>Santri Putri</h2>
-                        <SantriPutri />
+                    <div className="card-santri">
+                        <Image 
+                            src="/anakmuslimah.png"
+                            alt="santriputri"
+                            width={100}
+                            height={100}
+                        />
+                        <div className="deskripsi">
+                            <h2>Santriwati</h2>
+                            <SantriPutri />
+                        </div>
                     </div>
+                    <ul className="card-sekolah">
+                        <li>
+                            <h3>TK</h3>
+                            <span>0</span>
+                        </li>
+                        <li>
+                            <h3>SD</h3>
+                            <span>10</span>
+                        </li>
+                        <li>
+                            <h3>SMP</h3>
+                            <span>5</span>
+                        </li>
+                        <li>
+                            <h3>SMA</h3>
+                            <span>5</span>
+                        </li>
+                    </ul>
                 </motion.div>
                 <motion.div 
                     initial= {{opacity:0, scale:0.8}}
@@ -103,17 +162,36 @@ const About =()=>{
                     transition = {{ duration:0.6}}
                     viewport= {{ amount:0.4, once:false}}
                     className="santri pengurus-putra">
-                    <Image 
-                        className='img'
-                        src="/muslim.png"
-                        alt="pengurusputra"
-                        width={100}
-                        height={100}
-                    />
-                    <div className="deskripsi">
-                        <h2>Pengurus Putra</h2>
-                        <PengurusPutra />
+                    <div className="card-santri">
+                        <Image 
+                            src="/muslim.png"
+                            alt="pengurusputra"
+                            width={100}
+                            height={100}
+                        />
+                        <div className="deskripsi">
+                            <h2>Pengurus Putra</h2>
+                            <PengurusPutra />
+                        </div>
                     </div>
+                    <ul className="card-sekolah">
+                        <li>
+                            <h3>SMA</h3>
+                            <span>3</span>
+                        </li>
+                        <li>
+                            <h3>S1</h3>
+                            <span>5</span>
+                        </li>
+                        <li>
+                            <h3>S2</h3>
+                            <span>1</span>
+                        </li>
+                        <li>
+                            <h3>Hafiz</h3>
+                            <span>1</span>
+                        </li>
+                    </ul>
                 </motion.div>
                 <motion.div 
                     initial= {{opacity:0, scale:0.8}}
@@ -121,17 +199,36 @@ const About =()=>{
                     transition = {{ duration:0.6}}
                     viewport= {{ amount:0.4, once:false}}
                     className="santri pengurus-putri">
-                    <Image 
-                        className='img'
-                        src="/muslimah.png"
-                        alt="pengurusputri"
-                        width={100}
-                        height={100}
-                    />
-                    <div className="deskripsi">
-                        <h2>Pengurus Putri</h2>
-                        <PengurusPutri />
+                    <div className="card-santri">
+                        <Image 
+                            src="/muslimah.png"
+                            alt="pengurusputri"
+                            width={100}
+                            height={100}
+                        />
+                        <div className="deskripsi">
+                            <h2>Pengurus Putri</h2>
+                            <PengurusPutri />
+                        </div>
                     </div>
+                    <ul className="card-sekolah">
+                        <li>
+                            <h3>SMA</h3>
+                            <span>3</span>
+                        </li>
+                        <li>
+                            <h3>S1</h3>
+                            <span>1</span>
+                        </li>
+                        <li>
+                            <h3>S2</h3>
+                            <span>0</span>
+                        </li>
+                        <li>
+                            <h3>Hafiz</h3>
+                            <span>1</span>
+                        </li>
+                    </ul>
                 </motion.div>
             </div>
         </>
