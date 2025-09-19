@@ -17,7 +17,10 @@ const Program=()=>{
                         transition={{ duration:0.6 }}
                         viewport={{ amount:0.4, once:false }}
                     >
-                        <FontAwesomeIcon icon={faMosque} className='img'/>
+                        <div className="img">
+                            <FontAwesomeIcon icon={faMosque} className='icon'/>
+                            <h3>Dakwah</h3>
+                        </div>
                         <div className="deskripsi">
                             <h3>Dakwah</h3>
                             <p>Melalui kegiatan dakwah yang inklusif dan berkelanjutan, kami berkomitmen menyebarkan nilai-nilai kebaikan, memperkuat ukhuwah Islamiyah, dan membangun kesadaran spiritual di tengah masyarakat.</p>
@@ -29,7 +32,10 @@ const Program=()=>{
                         transition={{ duration:0.6 }}
                         viewport={{ amount:0.4, once:false }}
                     >
-                        <FontAwesomeIcon icon={faHandHoldingHand} className='img'/>
+                        <div className="img">
+                            <FontAwesomeIcon icon={faHandHoldingHand} className='icon'/>
+                            <h3>Sosial</h3>
+                        </div>
                         <div className="deskripsi">
                             <h3>Sosial</h3>
                             <p>Yayasan Al-Ishlah berkomitmen menghadirkan kepantian yang layak dan penuh kasih bagi anak-anak yatim, piatu, dan dhuafa. Melalui pendidikan, pembinaan karakter, dan pemenuhan kebutuhan dasar.</p>
@@ -41,7 +47,10 @@ const Program=()=>{
                         transition={{ duration:0.6 }}
                         viewport={{ amount:0.4, once:false }}
                     >
-                        <FontAwesomeIcon icon={faSchool} className='img'/>
+                        <div className="img">
+                            <FontAwesomeIcon icon={faSchool} className='icon'/>
+                            <h3>Pendidikan</h3>
+                        </div>
                         <div className="deskripsi">
                             <h3>Pendidikan</h3>
                             <p>Membuka akses pendidikan berkualitas yang berlandaskan nilai-nilai Islam, Yayasan Al-Ishlah membina generasi muda agar tumbuh menjadi insan berilmu, berakhlak, dan siap berkontribusi bagi masyarakat.</p>
