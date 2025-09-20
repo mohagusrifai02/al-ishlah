@@ -1215,11 +1215,11 @@ transition-duration: 1.4s;
 .cover,
 .back-cover{
     height: 400px;
-    width: 380px;
+    width: 310px;
 }
 .page, .last-page{
     height: 380px;
-    width: 370px;
+    width: 300px;
     padding: 30px;
     gap: 0;
 }
@@ -1233,7 +1233,7 @@ transition-duration: 1.4s;
 .last-page h3{
     text-align: center;
     font-size: 10px;
-    width: 300px;
+    width: 200px;
     color: #374151;
     margin: auto;
 }
