@@ -1201,16 +1201,41 @@ transition-duration: 1.4s;
     /* akhir jumlah */
 
     /* book clip */
-    .cover, .back-cover{
-    }
-    .page .last-page{
-    }
-    .last-page .title{
-    }
-    .last-page h3{
-    }
     .book{
-        margin-left: 0;
-    }
+    width: 70%;
+    margin-top: 100px;
+    margin-left: 0;
+}
+.cover{
+    color: #ededed;
+}
+.back-cover{
+    z-index: -2;
+}
+.cover,
+.back-cover{
+    height: 400px;
+    width: 380px;
+}
+.page, .last-page{
+    height: 380px;
+    width: 370px;
+    padding: 10px;
+    gap: 0;
+}
+.last-page .title{
+    gap: 0px;
+    color: #213547;
+}
+.last-page .title h1{
+    font-size: 15px;
+}
+.last-page h3{
+    text-align: center;
+    font-size: 10px;
+    width: 300px;
+    color: #374151;
+    margin: auto;
+}
     /* akhir book clip */
 }
