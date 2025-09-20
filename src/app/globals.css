@@ -1220,7 +1220,7 @@ transition-duration: 1.4s;
 .page, .last-page{
     height: 380px;
     width: 370px;
-    padding: 10px;
+    padding: 30px;
     gap: 0;
 }
 .last-page .title{
