@@ -528,7 +528,6 @@ transition-duration: 1.4s;
     display: flex;
     gap: 0px;
     padding: 0 20px;
-    background-color: #ffffff;
 }
 .container_blog h1{
     width: 100%;
@@ -571,7 +570,7 @@ transition-duration: 1.4s;
     height: 40vh;
     background-color: #F9FAFB;
     list-style: none;
-    border: 1px solid #ebeaea;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .container_blog .box .daftar-blog li a{
     width: 100%;
@@ -761,8 +760,9 @@ transition-duration: 1.4s;
     height: 30vh;
     width: 40%;
     height: 40vh;
-    border: 1px solid #ebeaea;
     list-style: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
 }
 .container_detail .blog-detail .daftar-blog li a{
     width: 100%;
