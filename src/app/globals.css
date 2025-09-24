@@ -1,5 +1,5 @@
 :root {
-  --background: #ffffff;
+  --background: #ededed;
   --foreground: #171717;
 }
 
@@ -170,7 +170,6 @@ nav ul li a{
 .container_about{
     width: 100%;
     display: flex;
-    background-color: #ffffff;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -439,10 +438,10 @@ transition-duration: 1.4s;
     gap: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
+    overflow: hidden;
 }
-.container_program ul li:hover{
-    transform: scale(3.05);
-    transition: all 0.3s ease-in-out;
+.container_program ul li:hover .deskripsi{
+    transform: translateX(0);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -451,7 +450,7 @@ transition-duration: 1.4s;
     height: 100%;
     color: #374151;
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     background-color: #F9FAFB;
     cursor: pointer;
     display: flex;
@@ -463,9 +462,6 @@ transition-duration: 1.4s;
     font-size: 50px;
     margin-bottom: 10px;
 }
-.container_program ul li .img:hover{
-    opacity: 0;
-}
 .container_program ul li .deskripsi{
     height: 100%;
     width: 100%;
@@ -474,11 +470,13 @@ transition-duration: 1.4s;
     justify-content: center;
     align-items: center;
     color: #374151;
-    z-index: 1;
+    z-index: 2;
+    transform: translateX(-100%);
     gap: 10px;
     background-color: #0F5132;
     color: #ededed;
     padding: 20px;
+    transition: ease-in 0.3s;
 }
 .container_program ul li .deskripsi h3{
     font-size: 20px;
@@ -938,6 +936,7 @@ transition-duration: 1.4s;
     background-color: #F9FAFB;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
+    overflow: hidden;
 }
 .jumlah .santri .card-santri{
     width: 100%;
@@ -947,11 +946,11 @@ transition-duration: 1.4s;
     justify-content: space-around;
     align-items: center;
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     cursor: pointer;
 }
-.jumlah .santri .card-santri:hover{
-    opacity: 0;
+.jumlah .santri:hover .card-sekolah{
+    transform: translateY(0);
 }
 .jumlah .santri .card-sekolah{
     width: 100%;
@@ -960,8 +959,10 @@ transition-duration: 1.4s;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    z-index: 1;
+    z-index: 2;
     flex-wrap: wrap;
+    transform: translateY(-100%);
+    transition: ease-in 0.3s;
 }
 .jumlah .santri .card-sekolah li{
     list-style: none;
@@ -995,6 +996,31 @@ transition-duration: 1.4s;
 }
 
 /* akhir jumlah santri*/
+
+/* bmy */
+.container_bmy{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.container_bmy .data-dashboard{
+    width: 100%;
+    margin-top: 100px;
+}
+.container_bmy .data-dashboard table{
+    width: 100%;
+}
+.container_bmy .data-dashboard table thead{
+    text-align: left;
+    height: 50px;
+    background-color: salmon;
+    color: #ffffff;
+}
+.container_bmy .data-dashboard table tr td{
+    border-bottom: 1px solid lightgray;
+    padding: 5px 0;
+}
+/* akhir bmy */
 
 @media (prefers-color-scheme: dark) {
   html {
