@@ -1069,6 +1069,16 @@ transition-duration: 1.4s;
     display: flex;
     justify-content: space-between;
 }
+
+@media screen and (max-width:600px){
+    .container-laporan .list-data{
+        flex-direction: column;
+        padding: 0 20px;
+    }
+    .container-laporan .list-data .list-item{
+        width: 100%;
+    }
+}
 /* laporan */
 
 @media (prefers-color-scheme: dark) {
