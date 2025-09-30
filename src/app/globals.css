@@ -1002,10 +1002,13 @@ transition-duration: 1.4s;
     width: 100%;
     display: flex;
     align-items: center;
+    flex-direction: column;
+}
+.container_bmy .form-bmy{
+    margin-top: 100px;
 }
 .container_bmy .data-dashboard{
     width: 100%;
-    margin-top: 100px;
 }
 .container_bmy .data-dashboard table{
     width: 100%;
@@ -1021,6 +1024,52 @@ transition-duration: 1.4s;
     padding: 5px 0;
 }
 /* akhir bmy */
+
+/* laporan */
+.container-laporan{
+    width: 100%;
+    margin-top: 100px;
+}
+.container-laporan h1{
+    width: 100%;
+    font-weight: 500;
+    color: #171717;
+    text-align: center;
+}
+.container-laporan .list-data{
+    margin-top: 50px;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.container-laporan .list-data li ul{
+    margin-top: 20px;
+    width: 100%;
+}
+.container-laporan .list-data li .keterangan{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #4B5563;
+}
+.container-laporan .list-data .list-item{
+    background-color: #ffffff;
+    list-style: none;
+    width: 30%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    line-height: 2;
+}
+.container-laporan .list-data li ul li{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+/* laporan */
 
 @media (prefers-color-scheme: dark) {
   html {

@@ -35,11 +35,58 @@ const BerandaBMY = ({ onBlogAdded }: bmyProps) => {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
+  const [formData, setFormData] = useState<bmy>({
+  id: 0,
+  judul: '',
+  infak: 0,
+  kencleng: 0,
+  kotakinfak: 0,
+  zakat: 0,
+  penerimaan: 0,
+  pendidikan: 0,
+  sosial: 0,
+  dakwah: 0,
+  operasional: 0,
+  });
 
   
   useEffect(() => {
     fetchItem();
   }, [currentPage, refreshKey]);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const { name, value } = e.target;
+  setFormData(prev => ({
+    ...prev,
+    [name]: name === 'judul' ? value : Number(value),
+  }));
+};
+
+const tambahItem = async (e: FormEvent) => {
+  e.preventDefault();
+  try {
+    await axios.post('https://api-alishlah-production.up.railway.app/api/auth/bmy', formData);
+    setPesan('Data berhasil ditambahkan');
+    setRefreshKey(prev => prev + 1);
+    //onBlogAdded();
+    setFormData({
+      id: 0,
+      judul: '',
+      infak: 0,
+      kencleng: 0,
+      kotakinfak: 0,
+      zakat: 0,
+      penerimaan: 0,
+      pendidikan: 0,
+      sosial: 0,
+      dakwah: 0,
+      operasional: 0,
+    });
+  } catch (error) {
+    console.error('Gagal menambahkan data:', error);
+    setPesan('Gagal menambahkan data');
+  }
+};
 
   const fetchItem = async () => {
     try {
@@ -67,6 +114,41 @@ const BerandaBMY = ({ onBlogAdded }: bmyProps) => {
     }
   };
 
+  const editItem = (item: bmy) => {
+  setEditMode(true);
+  setEditId(item.id);
+  setFormData(item);
+  };
+
+  const updateItem = async (e: FormEvent) => {
+  e.preventDefault();
+  if (editId === null) return;
+
+  try {
+    await axios.put(`https://api-alishlah-production.up.railway.app/api/auth/bmy/${editId}`, formData);
+    setPesan('Data berhasil diperbarui');
+    setEditMode(false);
+    setEditId(null);
+    setRefreshKey(prev => prev + 1);
+    setFormData({
+      id: 0,
+      judul: '',
+      infak: 0,
+      kencleng: 0,
+      kotakinfak: 0,
+      zakat: 0,
+      penerimaan: 0,
+      pendidikan: 0,
+      sosial: 0,
+      dakwah: 0,
+      operasional: 0,
+    });
+  } catch (error) {
+    console.error('Gagal update data:', error);
+    setPesan('Gagal update data');
+  }
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     router.push('/');
@@ -75,6 +157,53 @@ const BerandaBMY = ({ onBlogAdded }: bmyProps) => {
   return (
     <ProtectedRoute>
       <div className="container_bmy">
+        <form onSubmit={editMode ? updateItem:tambahItem} className="form-bmy">
+          <ul>
+            <li>
+              <label htmlFor="judul">Judul</label>
+              <input type="text" name="judul" value={formData.judul} onChange={handleChange} placeholder="Judul" required />
+            </li>
+            <li>
+              <label htmlFor="infak">Infak</label>
+              <input type="number" name="infak" value={formData.infak} onChange={handleChange} placeholder="Infak" />
+            </li>
+            <li>
+              <label htmlFor="kencleng">Kencleng</label>
+              <input type="number" name="kencleng" value={formData.kencleng} onChange={handleChange} placeholder="Kencleng" />
+            </li>
+            <li>
+              <label htmlFor="kotakinfak">Kotak Infak</label>
+              <input type="number" name="kotakinfak" value={formData.kotakinfak} onChange={handleChange} placeholder="Kotak Infak" />
+            </li>
+            <li>
+              <label htmlFor="zakat">Zakat</label>
+              <input type="number" name="zakat" value={formData.zakat} onChange={handleChange} placeholder="Zakat" />
+            </li>
+            <li>
+              <label htmlFor="penerimaan">Penerimaan</label>
+              <input type="number" name="penerimaan" value={formData.penerimaan} onChange={handleChange} placeholder="Penerimaan" />
+            </li>
+            <li>
+              <label htmlFor="pendidikan">Pendidikan</label>
+              <input type="number" name="pendidikan" value={formData.pendidikan} onChange={handleChange} placeholder="Pendidikan" />
+            </li>
+            <li>
+              <label htmlFor="sosial">Sosial</label>
+              <input type="number" name="sosial" value={formData.sosial} onChange={handleChange} placeholder="Sosial" />
+            </li>
+            <li>
+              <label htmlFor="dakwah">Dakwah</label>
+              <input type="number" name="dakwah" value={formData.dakwah} onChange={handleChange} placeholder="Dakwah" />
+            </li>
+            <li>
+              <label htmlFor="operasional">Operasional</label>
+              <input type="number" name="operasional" value={formData.operasional} onChange={handleChange} placeholder="Operasional" />
+            </li>
+            <li>
+              <button type="submit">{editMode ? 'update': 'tambah'}</button>
+            </li>
+          </ul>
+        </form>
         <div className="data-dashboard">
           <button onClick={handleLogout}>Logout</button>
           <div className="pesan">
@@ -98,24 +227,24 @@ const BerandaBMY = ({ onBlogAdded }: bmyProps) => {
               </tr>
             </thead>
             <tbody>
-                {items.map((item)=>(
+                {items.map((item, index)=>(
                     <tr key={item.id}>
-                        <td>{item.id}</td>
+                        <td>{(currentPage - 1) * 4 + index + 1}</td>
                         <td>{item.judul}</td>
-                        <td>{item.infak}</td>
-                        <td>{item.kencleng}</td>
-                        <td>{item.kotakinfak}</td>
-                        <td>{item.zakat}</td>
-                        <td>{item.penerimaan}</td>
-                        <td>{item.pendidikan}</td>
-                        <td>{item.sosial}</td>
-                        <td>{item.dakwah}</td>
-                        <td>{item.operasional}</td>
+                        <td>{item.infak.toLocaleString('id-ID')}</td>
+                        <td>{item.kencleng.toLocaleString('id-ID')}</td>
+                        <td>{item.kotakinfak.toLocaleString('id-ID')}</td>
+                        <td>{item.zakat.toLocaleString('id-ID')}</td>
+                        <td>{item.penerimaan.toLocaleString('id-ID')}</td>
+                        <td>{item.pendidikan.toLocaleString('id-ID')}</td>
+                        <td>{item.sosial.toLocaleString('id-ID')}</td>
+                        <td>{item.dakwah.toLocaleString('id-ID')}</td>
+                        <td>{item.operasional.toLocaleString('id-ID')}</td>
                         <td>
-                            <FontAwesomeIcon icon={faTrash}/>
+                            <FontAwesomeIcon icon={faTrash} onClick={()=>hapusItem(item.id)}/>
                         </td>
                         <td>
-                            <FontAwesomeIcon icon={faEdit}/>
+                            <FontAwesomeIcon icon={faEdit} onClick={()=>editItem(item)}/>
                         </td>
                     </tr>
                 ))}
