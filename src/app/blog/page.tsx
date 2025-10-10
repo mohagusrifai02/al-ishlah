@@ -10,8 +10,8 @@ import { motion } from "framer-motion";
 
 type Blog ={
     id:number;
-    judul:string;
-    gambar:string;
+    title:string;
+    image:string;
     slug:string;
 }
 
@@ -92,10 +92,10 @@ export default function Blog(){
                     {items.map((item)=>(
                         <li key={item.id}>
                             <Link href={`blog/${item.slug}`}>
-                                <img src={`https://api-alishlah-production.up.railway.app/gmb/${item.gambar}`} alt="" width='200px' height="200px" 
+                                <img src={`https://api-alishlah-production.up.railway.app/gmb/${item.image}`} alt="" width='200px' height="200px" 
                                  style={{ transform:`translateX(-${currentSlide * 670}px)` }}/>
                                 <div className="deskripsi"  style={{ transform:`translateX(-${currentSlide * 670}px)` }}>
-                                    <h3>{item.judul}</h3>
+                                    <h3>{item.title}</h3>
                                 </div>
                             </Link>
                         </li>
@@ -111,9 +111,9 @@ export default function Blog(){
                         {blogs.map((blog)=>(
                             <li key={blog.id}>
                                 <Link href={`blog/${blog.slug}`}>
-                                    <img src={`https://api-alishlah-production.up.railway.app/gmb/${blog.gambar}`} width='200px' height='200px'/>
+                                    <img src={`https://api-alishlah-production.up.railway.app/gmb/${blog.image}`} width='200px' height='200px'/>
                                     <div className="deskripsi">
-                                        <h3>{blog.judul}</h3>
+                                        <h3>{blog.title}</h3>
                                     </div>
                                 </Link>
                             </li>
