@@ -32,6 +32,8 @@ export default function Blog(){
     },[currentPage]);
     
     useEffect(()=>{
+        if (!Array.isArray(items) || items.length === 0) return;
+
         const interval = setInterval(()=>{
             setCurrenSlide((prev)=>(prev + 1) % items.length);
         }, 3000);
