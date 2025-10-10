@@ -40,7 +40,7 @@ export default function Blog(){
 
     const fetchBlog = async()=>{
         try {
-            const response = await axios.get(`https://api-alishlah-production.up.railway.app/api/auth/dashboard?page=${currentPage}&limit=4`);
+            const response = await axios.get(`https://api-alishlah-production.up.railway.app/api/auth/post?page=${currentPage}&limit=4`);
             setBlogs(response.data.data);
             setTotalPages(response.data.totalPages);
         } catch (error) {
@@ -58,7 +58,7 @@ export default function Blog(){
 
     const fetchItem = async()=>{
         try {
-            const response = await axios.get(`https://api-alishlah-production.up.railway.app/api/auth/dashboard?page=${currentPage}&limit=4`);
+            const response = await axios.get(`https://api-alishlah-production.up.railway.app/api/auth/post?page=${currentPage}&limit=4`);
             setItems(response.data.data);
         } catch (error) {
             console.error('error mengambil data', error);
