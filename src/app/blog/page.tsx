@@ -9,7 +9,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 type Blog ={
-    id:number;
+    _id:string;
     title:string;
     imageUrl:string;
     slug:string;
@@ -89,8 +89,8 @@ export default function Blog(){
             </div>
             <div className='container_blog'>
                 <ul className="blog-utama">
-                    {items.map((item)=>(
-                        <li key={item.id}>
+                    {Array.isArray(blogs) && blogs.map((item)=>(
+                        <li key={item._id}>
                             <Link href={`blog/${item.slug}`}>
                                 <img src={`https://api-alishlah-production.up.railway.app/gmb/${item.imageUrl}`} alt="" width='200px' height="200px" 
                                  style={{ transform:`translateX(-${currentSlide * 670}px)` }}/>
@@ -108,8 +108,8 @@ export default function Blog(){
                 <div className="box">
                     <h1>All Post</h1>
                     <ul className="daftar-blog">
-                        {blogs.map((blog)=>(
-                            <li key={blog.id}>
+                        {Array.isArray(blogs) && blogs.map((blog)=>(
+                            <li key={blog._id}>
                                 <Link href={`blog/${blog.slug}`}>
                                     <img src={`https://api-alishlah-production.up.railway.app/gmb/${blog.imageUrl}`} width='200px' height='200px'/>
                                     <div className="deskripsi">
