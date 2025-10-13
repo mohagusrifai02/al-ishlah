@@ -6,6 +6,7 @@ import Pagination from "../blog/pagination";
 import { useRouter } from "next/navigation";
 import ProtectedRoute from "@/components/protectedroute";
 import Image from "next/image";
+import { useCallback } from "react";
 
 
 type Blog = {
@@ -82,27 +83,32 @@ const Beranda = () => {
     setEditId(null);
     setRefreshKey(prev => prev + 1);
     fetchBlog();
-  } catch (error: any) {
+  } catch (error: unknown) {
+  if (axios.isAxiosError(error)) {
     console.error('Error simpan blog:', error.response?.data || error.message);
-    setPesan('Gagal menyimpan blog');
+  } else {
+    console.error('Error tidak terduga:', error);
+  }
+  setPesan('Gagal menyimpan blog');
   }
 };
 
-  useEffect(() => {
-    fetchBlog();
-  }, [currentPage, refreshKey]);
 
-  const fetchBlog = async () => {
-    try {
-      const response = await axios.get(
-        `https://api-alishlah-production.up.railway.app/api/auth/post?page=${currentPage}&limit=4`
-      );
-      setBlogs(response.data);
-      setTotalPages(response.data.totalPages);
-    } catch (error) {
-      console.error('Error get data:', error);
-    }
-  };
+const fetchBlog = useCallback(async () => {
+  try {
+    const response = await axios.get(
+      `https://api-alishlah-production.up.railway.app/api/auth/post`
+    );
+    setBlogs(response.data);
+    setTotalPages(response.data.totalPages);
+  } catch (error) {
+    console.error('Error get data:', error);
+  }
+}, []);
+
+useEffect(() => {
+  fetchBlog();
+}, [currentPage, refreshKey, fetchBlog]);
 
   const hapusBlog = async (id: string) => {
     const konfirmasi = window.confirm('Apakah Anda yakin akan menghapus ini?');
