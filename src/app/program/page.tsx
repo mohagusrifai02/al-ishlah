@@ -1,12 +1,10 @@
 "use client";
 
 import { motion } from 'framer-motion'
-import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMosque, faSchool, faHandHoldingHand } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { li } from 'framer-motion/client';
 
 type bmy = {
   id: number;
@@ -24,21 +22,17 @@ type bmy = {
 
 const Program=()=>{
     const [items, setItems]= useState<bmy[]>([]);
-    const [totalPages, setTotalPages]= useState<number>(1);
-    const [currentPage, setCurrentPage]= useState<number>(1);
-    const [refreshKey, setRefreshKey]= useState<number>(0);
 
     useEffect(()=>{
         fetchItem();
-    },[currentPage, refreshKey]);
+    },[]);
 
     const fetchItem = async()=>{
         try {
       const response = await axios.get(
-        `https://api-alishlah-production.up.railway.app/api/auth/bmy?page=${currentPage}&limit=4`
+        `https://api-alishlah-production.up.railway.app/api/auth/bmy`
       );
       setItems(response.data.data);
-      setTotalPages(response.data.totalPages);
     } catch (error) {
       console.error('Error get data:', error);
     }
