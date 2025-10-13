@@ -43,7 +43,7 @@ export default function Blog(){
     const fetchBlog = async()=>{
         try {
             const response = await axios.get(`https://api-alishlah-production.up.railway.app/api/auth/post?page=${currentPage}&limit=4`);
-            setBlogs(response.data.posts);
+            setBlogs(response.data);
             setTotalPages(response.data.totalPages);
         } catch (error) {
             console.error('error mengambil data', error);
@@ -61,7 +61,7 @@ export default function Blog(){
     const fetchItem = async()=>{
         try {
             const response = await axios.get(`https://api-alishlah-production.up.railway.app/api/auth/post?page=${currentPage}&limit=4`);
-            setItems(response.data.posts);
+            setItems(response.data);
         } catch (error) {
             console.error('error mengambil data', error);
         }
@@ -94,7 +94,7 @@ export default function Blog(){
                     {Array.isArray(blogs) && blogs.map((item)=>(
                         <li key={item._id}>
                             <Link href={`blog/${item.slug}`}>
-                                <img src={`https://api-alishlah-production.up.railway.app/gmb/${item.imageUrl}`} alt="" width='200px' height="200px" 
+                                <img src={`https://api-alishlah-production.up.railway.app${item.imageUrl}`} alt="" width='200px' height="200px" 
                                  style={{ transform:`translateX(-${currentSlide * 670}px)` }}/>
                                 <div className="deskripsi"  style={{ transform:`translateX(-${currentSlide * 670}px)` }}>
                                     <h3>{item.title}</h3>
@@ -113,7 +113,7 @@ export default function Blog(){
                         {Array.isArray(blogs) && blogs.map((blog)=>(
                             <li key={blog._id}>
                                 <Link href={`blog/${blog.slug}`}>
-                                    <img src={`https://api-alishlah-production.up.railway.app/gmb/${blog.imageUrl}`} width='200px' height='200px'/>
+                                    <img src={`https://api-alishlah-production.up.railway.app${blog.imageUrl}`} width='200px' height='200px'/>
                                     <div className="deskripsi">
                                         <h3>{blog.title}</h3>
                                     </div>

@@ -10,12 +10,11 @@ import { faWhatsapp, faFacebook, faInstagram } from "@fortawesome/free-brands-sv
 import Image from "next/image";
 
 type Detail ={
-    id:number;
-    judul:string;
-    kategori:string;
-    paragraf:string;
-    gambar:string;
+    _id:string;
+    title:string;
+    imageUrl:string;
     slug:string;
+    content:string;
 }
 
 const Detail = ()=>{
@@ -35,7 +34,7 @@ const Detail = ()=>{
 
     const fetchBlog = async()=>{
          try {
-             const response = await axios.get(`https://api-alishlah-production.up.railway.app/api/auth/dashboard/${slug}`);
+             const response = await axios.get(`https://api-alishlah-production.up.railway.app/api/auth/post/${slug}`);
              setBlog(response.data);
          } catch (error) {
              console.error('error det data', error);
@@ -44,8 +43,8 @@ const Detail = ()=>{
 
     const fetchBlogs = async()=>{
         try {
-            const response = await axios.get(`https://api-alishlah-production.up.railway.app/api/auth/dashboard?page=${currentPage}&limit=4`);
-            setBlogs(response.data.data);
+            const response = await axios.get(`https://api-alishlah-production.up.railway.app/api/auth/post?page=${currentPage}&limit=4`);
+            setBlogs(response.data);
             setTotalPages(response.data.totalPages);
         } catch (error) {
             console.error('error get blogs', error);
@@ -57,12 +56,11 @@ const Detail = ()=>{
             <div className="container_detail">
                 {blog && (<ul className="blog-single">
                     <li className="title">
-                        <h2>{ blog.judul }</h2>
+                        <h2>{ blog.title }</h2>
                         <div className="sub-deskripsi">
                             <Image src="/aguspemuda.png" alt="profile" width={100} height={100} className="img" />
                             <div className="deskripsi-title">
                                 <h4>Written by moh agus rifai</h4>
-                                <h4>Category: { blog.kategori }</h4>
                             </div>
                         </div>
                     </li>
@@ -80,11 +78,10 @@ const Detail = ()=>{
                         </ul>
                     </li>
                     <li className="image">
-                        <img src={`https://api-alishlah-production.up.railway.app/gmb/${blog.gambar}`} alt="" width='200px' height='200px'/>
-                        <p>source : { blog.gambar }</p>
+                        <img src={`https://api-alishlah-production.up.railway.app${blog.imageUrl}`} alt="" width='200px' height='200px'/>
                     </li>
                     <li>
-                        <p dangerouslySetInnerHTML={{ __html: blog.paragraf.replace(/\n/g, "<br />") }} />
+                        <p dangerouslySetInnerHTML={{ __html: blog.content.replace(/\n/g, "<br />") }} />
                     </li>
                 </ul>
                 )}
@@ -92,11 +89,11 @@ const Detail = ()=>{
                     <h1>All Post</h1>
                     <ul className="daftar-blog">
                         {blogs.map(blog=>(
-                            <li key={blog.id}>
+                            <li key={blog._id}>
                                 <Link href={`${blog.slug}`}>
-                                    <img src={`https://api-alishlah-production.up.railway.app/gmb/${blog.gambar}`} alt="" width='200px' height='200px' />
+                                    <img src={`https://api-alishlah-production.up.railway.app${blog.imageUrl}`} alt="" width='200px' height='200px' />
                                     <div className="deskripsi">
-                                        <h3>{blog.judul}</h3>
+                                        <h3>{blog.title}</h3>
                                     </div>
                                 </Link>
                             </li>

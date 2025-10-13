@@ -4,20 +4,20 @@ import Detail from "./detailClient";
 export async function generateMetadata({params} : {params: {slug: string}}): Promise<Metadata>{
     try {
          const { slug } = await params;
-        const res = await fetch(`https://api-alishlah-production.up.railway.app/api/auth/dashboard/${slug}`,
+        const res = await fetch(`https://api-alishlah-production.up.railway.app/api/auth/post/${slug}`,
         { next: { revalidate: 10 } }
         );
         const blog = await res.json();
 
     return{
-        title:blog.judul,
-        description:blog.paragraf,
+        title:blog.title,
+        description:blog.content,
         openGraph:{
-            title:blog.judul,
-            description:blog.paragraf,
+            title:blog.title,
+            description:blog.content,
             images:[
                 {
-                    url : `https://api-alishlah-production.up.railway.app/gmb/${blog.gambar}`
+                    url : `https://api-alishlah-production.up.railway.app/gmb/${blog.imageUrl}`
                 },
             ],
         }

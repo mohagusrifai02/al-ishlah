@@ -11,89 +11,85 @@ type BerandaProps = {
 };
 
 type Blog = {
-  id: number;
-  judul: string;
-  kategori: string;
-  paragraf: string;
-  gambar: string;
+    _id:string;
+    title:string;
+    imageUrl:string;
+    slug:string;
+    content:string;
 };
 
 const Beranda = ({ onBlogAdded }: BerandaProps) => {
-  const [judul, setJudul] = useState<string>('');
-  const [kategori, setKategori] = useState<string>('');
-  const [paragraf, setParagraf] = useState<string>('');
-  const [gambar, setGambar] = useState<File | null>(null);
+  const [title, setTitle] = useState<string>('');
+  const [content, setContent] = useState<string>('');
+  const [imageUrl, setImageUrl] = useState<File | null>(null);
   const [pesan, setPesan] = useState<string>('');
   const [refreshKey, setRefreshKey] = useState<number>(0);
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [editMode, setEditMode] = useState<boolean>(false);
-  const [editId, setEditId] = useState<number | null>(null);
+  const [editId, setEditId] = useState<string | null>(null);
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [waLinks, setWaLinks] = useState<string[]>([]);
 
   const handleEdit = (blog: Blog) => {
-    setJudul(blog.judul);
-    setKategori(blog.kategori);
-    setParagraf(blog.paragraf);
-    setGambar(null); // gambar dari server tidak bisa langsung dimasukkan ke File
-    setEditId(blog.id);
+    setTitle(blog.title);
+    setContent(blog.content);
+    setImageUrl(null); // gambar dari server tidak bisa langsung dimasukkan ke File
+    setEditId(blog._id);
     setEditMode(true);
     setPesan('');
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('judul', judul);
-    formData.append('kategori', kategori);
-    formData.append('paragraf', paragraf);
-    if (gambar) formData.append('gambar', gambar);
+  e.preventDefault();
 
-    try {
-      if (editMode && editId !== null) {
-        await axios.put(
-          `https://api-alishlah-production.up.railway.app/api/auth/dashboard/${editId}`,
-          formData,
-          { headers: { 'Content-Type': 'multipart/form-data' } }
-        );
-        setPesan('Blog berhasil diupdate');
-      } else {
-        await axios.post(
-          'https://api-alishlah-production.up.railway.app/api/auth/dashboard',
-          formData,
-          { headers: { 'Content-Type': 'multipart/form-data' } }
-        );
-        setPesan('Blog berhasil ditambahkan');
+  const formData = new FormData();
+  formData.append('title', title);
+  formData.append('content', content);
+  if (imageUrl) {
+    formData.append('image', imageUrl);
+  }
 
-        //kirim whatsapp
-        const slug = judul.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
-        const blogUrl = `https://al-ishlah-tau.vercel.app/blog/${slug}`;
-        const message = `halo, saya baru saja memposting blog baru berjudul "${judul}"` +`. silahkan baca di ${blogUrl}`;
-        const agus = '6289516589293';
-        const murni = '6287785945412';
-        const numbers = [agus, murni];
+  try {
+    const token = localStorage.getItem("token"); // ambil token jika diperlukan
 
-        const links = numbers.map((num)=>{
-          return `https://wa.me/${num}?text=${encodeURIComponent(message)}`;
-        });
-        setWaLinks(links);
+    const config = {
+      headers: {
+        ...(token && { Authorization: `Bearer ${token}` }) // hanya kirim jika token ada
+        // Jangan set Content-Type secara manual!
       }
+    };
 
-      setJudul('');
-      setKategori('');
-      setParagraf('');
-      setGambar(null);
-      setEditMode(false);
-      setEditId(null);
-      setRefreshKey(prev => prev + 1);
-      fetchBlog();
-    } catch (error) {
-      setPesan('Gagal menyimpan blog');
-      console.error('Error simpan blog:', error);
+    if (editMode && editId !== null) {
+      await axios.put(
+        `https://api-alishlah-production.up.railway.app/api/auth/post/${editId}`,
+        formData,
+        config
+      );
+      setPesan('Blog berhasil diupdate');
+    } else {
+      await axios.post(
+        'https://api-alishlah-production.up.railway.app/api/auth/post',
+        formData,
+        config
+      );
+      setPesan('Blog berhasil ditambahkan');
     }
-  };
+
+    // Reset form
+    setTitle('');
+    setContent('');
+    setImageUrl(null);
+    setEditMode(false);
+    setEditId(null);
+    setRefreshKey(prev => prev + 1);
+    fetchBlog();
+  } catch (error: any) {
+    console.error('Error simpan blog:', error.response?.data || error.message);
+    setPesan('Gagal menyimpan blog');
+  }
+};
 
   useEffect(() => {
     fetchBlog();
@@ -102,22 +98,22 @@ const Beranda = ({ onBlogAdded }: BerandaProps) => {
   const fetchBlog = async () => {
     try {
       const response = await axios.get(
-        `https://api-alishlah-production.up.railway.app/api/auth/dashboard?page=${currentPage}&limit=4`
+        `https://api-alishlah-production.up.railway.app/api/auth/post?page=${currentPage}&limit=4`
       );
-      setBlogs(response.data.data);
+      setBlogs(response.data);
       setTotalPages(response.data.totalPages);
     } catch (error) {
       console.error('Error get data:', error);
     }
   };
 
-  const hapusBlog = async (id: number) => {
+  const hapusBlog = async (id: string) => {
     const konfirmasi = window.confirm('Apakah Anda yakin akan menghapus ini?');
     if (!konfirmasi) return;
 
     try {
       await axios.delete(
-        `https://api-alishlah-production.up.railway.app/api/auth/dashboard/${id}`
+        `https://api-alishlah-production.up.railway.app/api/auth/post/${id}`
       );
       fetchBlog();
     } catch (error) {
@@ -140,33 +136,20 @@ const Beranda = ({ onBlogAdded }: BerandaProps) => {
                 <label>Judul</label>
                 <input
                   type="text"
-                  name="judul"
-                  value={judul}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) => setJudul(e.target.value)}
+                  name="title"
+                  value={title}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
                   required
                 />
               </li>
               <li>
-                <label>Kategori</label>
-                <select 
-                  name="kategori" id=""
-                  onChange={(e: ChangeEvent<HTMLSelectElement>) => setKategori(e.target.value)}
-                  value={kategori}
-                  required>
-                    <option value="">Pilih Kategori</option>
-                    <option value="artikel">Artikel</option>
-                    <option value="program">Program</option>
-                    <option value="berita">Berita</option>
-                </select>
-              </li>
-              <li>
                 <label>Paragraf</label>
                 <textarea
-                  name="paragraf"
+                  name="content"
                   cols={30}
                   rows={10}
-                  value={paragraf}
-                  onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setParagraf(e.target.value)}
+                  value={content}
+                  onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setContent(e.target.value)}
                   required
                 ></textarea>
               </li>
@@ -174,10 +157,10 @@ const Beranda = ({ onBlogAdded }: BerandaProps) => {
                 <label>Gambar</label>
                 <input
                   type="file"
-                  name="gambar"
+                  name="imageUrl"
                   accept="image/*"
                   onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    setGambar(e.target.files ? e.target.files[0] : null)
+                    setImageUrl(e.target.files ? e.target.files[0] : null)
                   }
                   required
                 />
@@ -192,20 +175,6 @@ const Beranda = ({ onBlogAdded }: BerandaProps) => {
           <button onClick={handleLogout}>Logout</button>
           <div className="pesan">
             {pesan && <p>{pesan}</p>}
-            {waLinks.length > 0 && (
-            <div style={{ marginTop:'1rem'}}>
-              <p>Broadcast ke whatsapp</p>
-              <ul>
-                {waLinks.map((link, index) => (
-                  <li key={index}>
-                    <a href={link} target="_blank" rel="noopener noreferrer">
-                      Kirim ke {link.split('/')[3].split('?')[0]};
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            )}
           </div>
           <table border={0} cellPadding={10} cellSpacing={0}>
             <thead>
@@ -213,26 +182,24 @@ const Beranda = ({ onBlogAdded }: BerandaProps) => {
                 <th>No</th>
                 <th>Gambar</th>
                 <th>Judul</th>
-                <th>Kategori</th>
                 <th colSpan={2}>Sunting</th>
               </tr>
             </thead>
             <tbody>
               {blogs.map((blog) => (
-                <tr key={blog.id}>
-                  <td>{blog.id}</td>
+                <tr key={blog._id}>
+                  <td>{blog._id}</td>
                   <td className="gambar">
                     <img
-                      src={`https://api-alishlah-production.up.railway.app/gmb/${blog.gambar}`}
+                      src={`https://api-alishlah-production.up.railway.app${blog.imageUrl}`}
                       width="50"
                       height="50"
                       alt="thumbnail"
                     />
                   </td>
-                  <td>{blog.judul}</td>
-                  <td>{blog.kategori}</td>
+                  <td>{blog.title}</td>
                   <td>
-                    <button onClick={() => hapusBlog(blog.id)}>Hapus</button>
+                    <button onClick={() => hapusBlog(blog._id)}>Hapus</button>
                   </td>
                   <td>
                     <button onClick={() => handleEdit(blog)}>Edit</button>
