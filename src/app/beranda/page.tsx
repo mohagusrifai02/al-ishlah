@@ -99,7 +99,7 @@ const fetchBlog = useCallback(async () => {
     const response = await axios.get(
       `https://api-alishlah-production.up.railway.app/api/auth/post`
     );
-    setBlogs(response.data);
+    setBlogs(response.data.posts);
     setTotalPages(response.data.totalPages);
   } catch (error) {
     console.error('Error get data:', error);
