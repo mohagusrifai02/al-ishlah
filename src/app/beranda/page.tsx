@@ -6,9 +6,6 @@ import Pagination from "../blog/pagination";
 import { useRouter } from "next/navigation";
 import ProtectedRoute from "@/components/protectedroute";
 
-type BerandaProps = {
-  onBlogAdded: () => void;
-};
 
 type Blog = {
     _id:string;
@@ -18,7 +15,7 @@ type Blog = {
     content:string;
 };
 
-const Beranda = ({ onBlogAdded }: BerandaProps) => {
+const Beranda = () => {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [imageUrl, setImageUrl] = useState<File | null>(null);
@@ -30,7 +27,6 @@ const Beranda = ({ onBlogAdded }: BerandaProps) => {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
-  const [waLinks, setWaLinks] = useState<string[]>([]);
 
   const handleEdit = (blog: Blog) => {
     setTitle(blog.title);
