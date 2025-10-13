@@ -35,7 +35,7 @@ const Detail = ()=>{
     const fetchBlog = async()=>{
          try {
              const response = await axios.get(`https://api-alishlah-production.up.railway.app/api/auth/post/${slug}`);
-             setBlog(response.data);
+             setBlog(response.data.posts);
          } catch (error) {
              console.error('error det data', error);
          }
@@ -44,7 +44,7 @@ const Detail = ()=>{
     const fetchBlogs = async()=>{
         try {
             const response = await axios.get(`https://api-alishlah-production.up.railway.app/api/auth/post?page=${currentPage}&limit=4`);
-            setBlogs(response.data);
+            setBlogs(response.data.posts);
             setTotalPages(response.data.totalPages);
         } catch (error) {
             console.error('error get blogs', error);
