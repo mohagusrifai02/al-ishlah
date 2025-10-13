@@ -7,9 +7,6 @@ import ProtectedRoute from "@/components/protectedroute";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
-type bmyProps = {
-  onBlogAdded: () => void;
-};
 
 type bmy = {
   id: number;
@@ -25,16 +22,13 @@ type bmy = {
   operasional:number;
 };
 
-const BerandaBMY = ({ onBlogAdded }: bmyProps) => {
+const BerandaBMY = () => {
   const [judul, setJudul] = useState<string>('');
   const [pesan, setPesan] = useState<string>('');
-  const [refreshKey, setRefreshKey] = useState<number>(0);
   const [items, setItems] = useState<bmy[]>([]);
   const [editMode, setEditMode] = useState<boolean>(false);
   const [editId, setEditId] = useState<number | null>(null);
   const router = useRouter();
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalPages, setTotalPages] = useState<number>(1);
   const [formData, setFormData] = useState<bmy>({
   id: 0,
   judul: '',
@@ -52,7 +46,7 @@ const BerandaBMY = ({ onBlogAdded }: bmyProps) => {
   
   useEffect(() => {
     fetchItem();
-  }, [currentPage, refreshKey]);
+  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
   const { name, value } = e.target;
@@ -67,7 +61,6 @@ const tambahItem = async (e: FormEvent) => {
   try {
     await axios.post('https://api-alishlah-production.up.railway.app/api/auth/bmy', formData);
     setPesan('Data berhasil ditambahkan');
-    setRefreshKey(prev => prev + 1);
     //onBlogAdded();
     setFormData({
       id: 0,
@@ -91,10 +84,9 @@ const tambahItem = async (e: FormEvent) => {
   const fetchItem = async () => {
     try {
       const response = await axios.get(
-        `https://api-alishlah-production.up.railway.app/api/auth/bmy?page=${currentPage}&limit=4`
+        `https://api-alishlah-production.up.railway.app/api/auth/bmy`
       );
       setItems(response.data.data);
-      setTotalPages(response.data.totalPages);
     } catch (error) {
       console.error('Error get data:', error);
     }
@@ -129,7 +121,6 @@ const tambahItem = async (e: FormEvent) => {
     setPesan('Data berhasil diperbarui');
     setEditMode(false);
     setEditId(null);
-    setRefreshKey(prev => prev + 1);
     setFormData({
       id: 0,
       judul: '',
@@ -229,7 +220,7 @@ const tambahItem = async (e: FormEvent) => {
             <tbody>
                 {items.map((item, index)=>(
                     <tr key={item.id}>
-                        <td>{(currentPage - 1) * 4 + index + 1}</td>
+                        <td></td>
                         <td>{item.judul}</td>
                         <td>{item.infak.toLocaleString('id-ID')}</td>
                         <td>{item.kencleng.toLocaleString('id-ID')}</td>

@@ -43,7 +43,7 @@ export default function Home() {
     </div>
         <About />
         <Program />
-        {/* <Blog /> */}
+        <Blog />
         <Kontak />
     </>
   );

@@ -94,7 +94,7 @@ export default function Blog(){
                     {Array.isArray(blogs) && blogs.map((item)=>(
                         <li key={item._id}>
                             <Link href={`blog/${item.slug}`}>
-                                <img src={`https://api-alishlah-production.up.railway.app${item.imageUrl}`} alt="" width='200px' height="200px" 
+                                <Image src={`https://api-alishlah-production.up.railway.app${item.imageUrl}`} alt="" width={200} height={200} 
                                  style={{ transform:`translateX(-${currentSlide * 670}px)` }}/>
                                 <div className="deskripsi"  style={{ transform:`translateX(-${currentSlide * 670}px)` }}>
                                     <h3>{item.title}</h3>
@@ -113,7 +113,7 @@ export default function Blog(){
                         {Array.isArray(blogs) && blogs.map((blog)=>(
                             <li key={blog._id}>
                                 <Link href={`blog/${blog.slug}`}>
-                                    <img src={`https://api-alishlah-production.up.railway.app${blog.imageUrl}`} width='200px' height='200px'/>
+                                    <Image src={`https://api-alishlah-production.up.railway.app${blog.imageUrl}`} alt="" width={200} height={200} />
                                     <div className="deskripsi">
                                         <h3>{blog.title}</h3>
                                     </div>
