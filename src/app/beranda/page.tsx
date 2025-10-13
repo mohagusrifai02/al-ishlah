@@ -5,6 +5,7 @@ import axios from "axios";
 import Pagination from "../blog/pagination";
 import { useRouter } from "next/navigation";
 import ProtectedRoute from "@/components/protectedroute";
+import Image from "next/image";
 
 
 type Blog = {
@@ -186,10 +187,10 @@ const Beranda = () => {
                 <tr key={blog._id}>
                   <td>{blog._id}</td>
                   <td className="gambar">
-                    <img
+                    <Image
                       src={`https://api-alishlah-production.up.railway.app${blog.imageUrl}`}
-                      width="50"
-                      height="50"
+                      width={50}
+                      height={50}
                       alt="thumbnail"
                     />
                   </td>

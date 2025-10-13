@@ -23,7 +23,6 @@ type bmy = {
 };
 
 const BerandaBMY = () => {
-  const [judul, setJudul] = useState<string>('');
   const [pesan, setPesan] = useState<string>('');
   const [items, setItems] = useState<bmy[]>([]);
   const [editMode, setEditMode] = useState<boolean>(false);
@@ -218,7 +217,7 @@ const tambahItem = async (e: FormEvent) => {
               </tr>
             </thead>
             <tbody>
-                {items.map((item, index)=>(
+                {items.map((item)=>(
                     <tr key={item.id}>
                         <td></td>
                         <td>{item.judul}</td>

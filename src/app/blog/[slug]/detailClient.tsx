@@ -78,7 +78,7 @@ const Detail = ()=>{
                         </ul>
                     </li>
                     <li className="image">
-                        <img src={`https://api-alishlah-production.up.railway.app${blog.imageUrl}`} alt="" width='200px' height='200px'/>
+                        <Image src={`https://api-alishlah-production.up.railway.app${blog.imageUrl}`} alt="" width={200} height={200} />
                     </li>
                     <li>
                         <p dangerouslySetInnerHTML={{ __html: blog.content.replace(/\n/g, "<br />") }} />
@@ -91,7 +91,7 @@ const Detail = ()=>{
                         {blogs.map(blog=>(
                             <li key={blog._id}>
                                 <Link href={`${blog.slug}`}>
-                                    <img src={`https://api-alishlah-production.up.railway.app${blog.imageUrl}`} alt="" width='200px' height='200px' />
+                                    <Image src={`https://api-alishlah-production.up.railway.app${blog.imageUrl}`} alt="" width={200} height={200} />
                                     <div className="deskripsi">
                                         <h3>{blog.title}</h3>
                                     </div>
