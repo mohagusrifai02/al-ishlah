@@ -17,7 +17,7 @@ export async function generateMetadata({params} : {params: {slug: string}}): Pro
             description:blog.content,
             images:[
                 {
-                    url : `https://api-alishlah-production.up.railway.app/gmb/${blog.imageUrl}`
+                    url : `https://api-alishlah-production.up.railway.app${blog.imageUrl}`
                 },
             ],
         }
