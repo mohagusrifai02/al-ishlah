@@ -35,7 +35,7 @@ const Detail = ()=>{
     const fetchBlog = async()=>{
          try {
              const response = await axios.get(`https://api-alishlah-production.up.railway.app/api/auth/post/${slug}`);
-             setBlog(response.data.posts);
+             setBlog(response.data);
          } catch (error) {
              console.error('error det data', error);
          }

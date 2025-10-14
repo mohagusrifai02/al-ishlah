@@ -112,7 +112,7 @@ export default function Blog(){
                     <ul className="daftar-blog">
                         {Array.isArray(blogs) && blogs.map((blog)=>(
                             <li key={blog._id}>
-                                <Link href={`blog/${blog.slug}`}>
+                                <Link href={`/blog/${blog.slug}`}>
                                     <Image src={`https://api-alishlah-production.up.railway.app${blog.imageUrl}`} alt="" width={200} height={200} />
                                     <div className="deskripsi">
                                         <h3>{blog.title}</h3>
