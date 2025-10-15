@@ -9,12 +9,8 @@ import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 
 type bmy = {
-  id: number;
+  _id: string;
   judul: string;
-  infak: number;
-  kencleng:number;
-  kotakinfak:number;
-  zakat:number;
   penerimaan:number;
   pendidikan:number;
   sosial:number;
@@ -26,15 +22,11 @@ const BerandaBMY = () => {
   const [pesan, setPesan] = useState<string>('');
   const [items, setItems] = useState<bmy[]>([]);
   const [editMode, setEditMode] = useState<boolean>(false);
-  const [editId, setEditId] = useState<number | null>(null);
+  const [editId, setEditId] = useState<string | null>(null);
   const router = useRouter();
   const [formData, setFormData] = useState<bmy>({
-  id: 0,
+  _id: '',
   judul: '',
-  infak: 0,
-  kencleng: 0,
-  kotakinfak: 0,
-  zakat: 0,
   penerimaan: 0,
   pendidikan: 0,
   sosial: 0,
@@ -44,7 +36,7 @@ const BerandaBMY = () => {
 
   
   useEffect(() => {
-    fetchItem();
+    fetchItems();
   }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -62,12 +54,8 @@ const tambahItem = async (e: FormEvent) => {
     setPesan('Data berhasil ditambahkan');
     //onBlogAdded();
     setFormData({
-      id: 0,
+      _id: '',
       judul: '',
-      infak: 0,
-      kencleng: 0,
-      kotakinfak: 0,
-      zakat: 0,
       penerimaan: 0,
       pendidikan: 0,
       sosial: 0,
@@ -80,26 +68,26 @@ const tambahItem = async (e: FormEvent) => {
   }
 };
 
-  const fetchItem = async () => {
+  const fetchItems = async () => {
     try {
       const response = await axios.get(
-        `https://api-alishlah-production.up.railway.app/api/auth/bmy`
+        `https://api-alishlah-production.up.railway.app/api/auth/bmy-entry`
       );
-      setItems(response.data.data);
+      setItems(response.data.Bmys);
     } catch (error) {
       console.error('Error get data:', error);
     }
-  };
+};
 
-  const hapusItem = async (id: number) => {
+  const hapusItem = async (_id: string) => {
     const konfirmasi = window.confirm('Apakah Anda yakin akan menghapus ini?');
     if (!konfirmasi) return;
 
     try {
       await axios.delete(
-        `https://api-alishlah-production.up.railway.app/api/auth/bmy/${id}`
+        `https://api-alishlah-production.up.railway.app/api/auth/bmy-entry/${_id}`
       );
-      fetchItem();
+      fetchItems();
     } catch (error) {
       console.error('Error hapus blog:', error);
     }
@@ -107,7 +95,7 @@ const tambahItem = async (e: FormEvent) => {
 
   const editItem = (item: bmy) => {
   setEditMode(true);
-  setEditId(item.id);
+  setEditId(item._id);
   setFormData(item);
   };
 
@@ -116,17 +104,13 @@ const tambahItem = async (e: FormEvent) => {
   if (editId === null) return;
 
   try {
-    await axios.put(`https://api-alishlah-production.up.railway.app/api/auth/bmy/${editId}`, formData);
+    await axios.put(`https://api-alishlah-production.up.railway.app/api/auth/bmy-entry/${editId}`, formData);
     setPesan('Data berhasil diperbarui');
     setEditMode(false);
     setEditId(null);
     setFormData({
-      id: 0,
+      _id: '',
       judul: '',
-      infak: 0,
-      kencleng: 0,
-      kotakinfak: 0,
-      zakat: 0,
       penerimaan: 0,
       pendidikan: 0,
       sosial: 0,
@@ -152,22 +136,6 @@ const tambahItem = async (e: FormEvent) => {
             <li>
               <label htmlFor="judul">Judul</label>
               <input type="text" name="judul" value={formData.judul} onChange={handleChange} placeholder="Judul" required />
-            </li>
-            <li>
-              <label htmlFor="infak">Infak</label>
-              <input type="number" name="infak" value={formData.infak} onChange={handleChange} placeholder="Infak" />
-            </li>
-            <li>
-              <label htmlFor="kencleng">Kencleng</label>
-              <input type="number" name="kencleng" value={formData.kencleng} onChange={handleChange} placeholder="Kencleng" />
-            </li>
-            <li>
-              <label htmlFor="kotakinfak">Kotak Infak</label>
-              <input type="number" name="kotakinfak" value={formData.kotakinfak} onChange={handleChange} placeholder="Kotak Infak" />
-            </li>
-            <li>
-              <label htmlFor="zakat">Zakat</label>
-              <input type="number" name="zakat" value={formData.zakat} onChange={handleChange} placeholder="Zakat" />
             </li>
             <li>
               <label htmlFor="penerimaan">Penerimaan</label>
@@ -204,10 +172,6 @@ const tambahItem = async (e: FormEvent) => {
               <tr>
                 <th>No</th>
                 <th>Judul</th>
-                <th>Infak</th>
-                <th>Kencleng</th>
-                <th>Kotak Infak</th>
-                <th>Zakat</th>
                 <th>Penerimaan</th>
                 <th>Pendidikan</th>
                 <th>Sosial</th>
@@ -218,20 +182,16 @@ const tambahItem = async (e: FormEvent) => {
             </thead>
             <tbody>
                 {items.map((item)=>(
-                    <tr key={item.id}>
+                    <tr key={item._id}>
                         <td></td>
                         <td>{item.judul}</td>
-                        <td>{item.infak.toLocaleString('id-ID')}</td>
-                        <td>{item.kencleng.toLocaleString('id-ID')}</td>
-                        <td>{item.kotakinfak.toLocaleString('id-ID')}</td>
-                        <td>{item.zakat.toLocaleString('id-ID')}</td>
                         <td>{item.penerimaan.toLocaleString('id-ID')}</td>
                         <td>{item.pendidikan.toLocaleString('id-ID')}</td>
                         <td>{item.sosial.toLocaleString('id-ID')}</td>
                         <td>{item.dakwah.toLocaleString('id-ID')}</td>
                         <td>{item.operasional.toLocaleString('id-ID')}</td>
                         <td>
-                            <FontAwesomeIcon icon={faTrash} onClick={()=>hapusItem(item.id)}/>
+                            <FontAwesomeIcon icon={faTrash} onClick={()=>hapusItem(item._id)}/>
                         </td>
                         <td>
                             <FontAwesomeIcon icon={faEdit} onClick={()=>editItem(item)}/>

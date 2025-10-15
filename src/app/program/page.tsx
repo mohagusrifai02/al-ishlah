@@ -7,13 +7,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 type bmy = {
-  id: number;
+  _id: string;
   judul: string;
-  infak: number;
-  kencleng:number;
-  kotakinfak:number;
-  zakat:number;
-  penerimaan:number;
+  penerimaan: number;
   pendidikan:number;
   sosial:number;
   dakwah:number;
@@ -30,9 +26,9 @@ const Program=()=>{
     const fetchItem = async()=>{
         try {
       const response = await axios.get(
-        `https://api-alishlah-production.up.railway.app/api/auth/bmy`
+        `https://api-alishlah-production.up.railway.app/api/auth/bmy-entry`
       );
-      setItems(response.data.data);
+      setItems(response.data.Bmys);
     } catch (error) {
       console.error('Error get data:', error);
     }
@@ -99,35 +95,11 @@ const Program=()=>{
                             whileInView={{ opacity:1, y:0 }}
                             transition={{ duration:0.6 }}
                             viewport={{ amount:0.4, once:false }}
-                            key={item.id} className='list-item'>
+                            key={item._id} className='list-item'>
                             <span className='keterangan'>
                                 {item.judul}
                             </span>
                             <ul>
-                                <li>
-                                    <p>Infak</p>
-                                    <span>
-                                        {item.infak.toLocaleString('id-ID')}
-                                    </span>
-                                </li>
-                                <li>
-                                    <p>Kencleng</p>
-                                    <span>
-                                        {item.kencleng.toLocaleString('id-ID')}
-                                    </span>
-                                </li>
-                                <li>
-                                    <p>Kotak Infak</p>
-                                    <span>
-                                        {item.kotakinfak.toLocaleString('id-ID')}
-                                    </span>
-                                </li>
-                                <li>
-                                    <p>Zakat</p>
-                                    <span>
-                                        {item.zakat.toLocaleString('id-ID')}
-                                    </span>
-                                </li>
                                 <li>
                                     <p>Total Penerimaan</p>
                                     <span>
