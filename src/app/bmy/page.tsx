@@ -50,7 +50,7 @@ const BerandaBMY = () => {
 const tambahItem = async (e: FormEvent) => {
   e.preventDefault();
   try {
-    await axios.post('https://api-alishlah-production.up.railway.app/api/auth/bmy', formData);
+    await axios.post('https://api-alishlah-production.up.railway.app/api/auth/bmy-entry', formData);
     setPesan('Data berhasil ditambahkan');
     //onBlogAdded();
     setFormData({
