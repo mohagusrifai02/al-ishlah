@@ -565,9 +565,7 @@ transition-duration: 1.4s;
 
 }
 .container_blog .box .daftar-blog li{
-    height: 30vh;
     width: 40%;
-    height: 40vh;
     background-color: #F9FAFB;
     list-style: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -757,9 +755,7 @@ transition-duration: 1.4s;
 
 }
 .container_detail .blog-detail .daftar-blog li{
-    height: 30vh;
     width: 40%;
-    height: 40vh;
     list-style: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
