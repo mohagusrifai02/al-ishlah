@@ -8,6 +8,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
     },
     {
+      url: 'https://www.alishlahtegal.net/program',
+      lastModified: new Date(),
+    },
+    {
       url: 'https://www.alishlahtegal.net/blog',
       lastModified: new Date(),
     },
