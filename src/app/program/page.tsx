@@ -43,7 +43,7 @@ const Program=()=>{
                         initial={{ opacity:0, y:50 }}
                         whileInView={{ opacity:1, y:0 }}
                         transition={{ duration:0.6 }}
-                        viewport={{ amount:0.4, once:false }}
+                        viewport={{ amount:0.4, once:true }}
                     >
                         <div className="img">
                             <FontAwesomeIcon icon={faMosque} className='icon'/>
@@ -58,7 +58,7 @@ const Program=()=>{
                         initial={{ opacity:0, y:50 }}
                         whileInView={{ opacity:1, y:0 }}
                         transition={{ duration:0.6 }}
-                        viewport={{ amount:0.4, once:false }}
+                        viewport={{ amount:0.4, once:true }}
                     >
                         <div className="img">
                             <FontAwesomeIcon icon={faHandHoldingHand} className='icon'/>
@@ -73,7 +73,7 @@ const Program=()=>{
                         initial={{ opacity:0, y:50 }}
                         whileInView={{ opacity:1, y:0 }}
                         transition={{ duration:0.6 }}
-                        viewport={{ amount:0.4, once:false }}
+                        viewport={{ amount:0.4, once:true }}
                     >
                         <div className="img">
                             <FontAwesomeIcon icon={faSchool} className='icon'/>
@@ -94,7 +94,7 @@ const Program=()=>{
                             initial={{ opacity:0, y:50 }}
                             whileInView={{ opacity:1, y:0 }}
                             transition={{ duration:0.6 }}
-                            viewport={{ amount:0.4, once:false }}
+                            viewport={{ amount:0.4, once:true }}
                             key={item._id} className='list-item'>
                             <span className='keterangan'>
                                 {item.judul}

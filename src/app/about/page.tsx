@@ -8,14 +8,35 @@ import Link from 'next/link';
 const About =()=>{
     return (
         <>
-            <motion.div 
-                className="container_about"
-                initial={{ opacity:0, y:30 }}
-                whileInView={{ opacity:1, y:0 }}
-                transition={{ duration:0.6 }}
-                viewport={{ amount:0.4, once:false }}
-            >
-                <div className="hero-about">
+            <div className="container_about">
+                <motion.div 
+                    className="hero-about"
+                    initial={{ opacity:0, scale:0.8 }}
+                    whileInView={{ opacity:1, scale:1 }}
+                    transition={{ duration:0.6 }}
+                    viewport={{ amount:0.4, once:true }}>
+                    <motion.div
+                        className="hero-gambar"
+                        initial={{ opacity:0, scale:0.8 }}
+                        whileInView={{ opacity:1, scale:1 }}
+                        transition={{ duration:0.6 }}
+                        viewport={{ amount:0.4, once:true }}>
+                        <Image 
+                            src='/mbakmbak.jpg'
+                            className='img-1'
+                            alt='about hero'
+                            width={600}
+                            height={400}
+                        />
+                        <Image 
+                            src='/piknik.jpg'
+                            className='img-2'
+                            alt='about hero'
+                            width={600}
+                            height={400}
+                        />
+                    </motion.div>
+                
                     <div className="deskripsi">
                         <div className="logo">
                             <Image 
@@ -35,8 +56,8 @@ const About =()=>{
                         <p>Pesantren Al-Ishlah didirikan pada tahun 1995 dengan tujuan memberikan pendidikan agama dan umum yang berkualitas kepada generasi muda. Kami berkomitmen untuk mencetak insan yang berakhlak mulia, berilmu, dan siap menghadapi tantangan zaman.</p>
                         <Link href="/kontak" className='tbl-kontak'>Hubungi Kami</Link>
                     </div>
-                </div>
-            </motion.div>
+                </motion.div>
+            </div>
             <div className="title">
                 <h1>Statistik dan Pendidikan</h1>
             </div>
@@ -45,7 +66,7 @@ const About =()=>{
                     initial= {{opacity:0, scale:0.8}}
                     whileInView = {{ opacity:1, scale:1 }}
                     transition = {{ duration:0.6}}
-                    viewport= {{ amount:0.4, once:false}}
+                    viewport= {{ amount:0.4, once:true}}
                     className="santri putra">
                     <div className="card-santri">
                         <Image 
@@ -82,7 +103,7 @@ const About =()=>{
                     initial= {{opacity:0, scale:0.8}}
                     whileInView = {{ opacity:1, scale:1 }}
                     transition = {{ duration:0.6}}
-                    viewport= {{ amount:0.4, once:false}}
+                    viewport= {{ amount:0.4, once:true}}
                     className="santri putra">
                     <div className="card-santri">
                         <Image 
@@ -119,7 +140,7 @@ const About =()=>{
                     initial= {{opacity:0, scale:0.8}}
                     whileInView = {{ opacity:1, scale:1 }}
                     transition = {{ duration:0.6}}
-                    viewport= {{ amount:0.4, once:false}}
+                    viewport= {{ amount:0.4, once:true}}
                     className="santri putri">
                     <div className="card-santri">
                         <Image 
@@ -156,7 +177,7 @@ const About =()=>{
                     initial= {{opacity:0, scale:0.8}}
                     whileInView = {{ opacity:1, scale:1 }}
                     transition = {{ duration:0.6}}
-                    viewport= {{ amount:0.4, once:false}}
+                    viewport= {{ amount:0.4, once:true}}
                     className="santri pengurus-putra">
                     <div className="card-santri">
                         <Image 
@@ -193,7 +214,7 @@ const About =()=>{
                     initial= {{opacity:0, scale:0.8}}
                     whileInView = {{ opacity:1, scale:1 }}
                     transition = {{ duration:0.6}}
-                    viewport= {{ amount:0.4, once:false}}
+                    viewport= {{ amount:0.4, once:true}}
                     className="santri pengurus-putri">
                     <div className="card-santri">
                         <Image 

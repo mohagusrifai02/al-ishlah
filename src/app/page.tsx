@@ -17,7 +17,7 @@ export default function Home() {
                 initial={{ opacity:0, y:50 }}
                 whileInView={{ opacity:1, y:0 }}
                 transition={{ duration:0.6 }}
-                viewport={{ amount: 0.4, once:false }}
+                viewport={{ amount: 0.4, once:true }}
             >
                 <div className="lingkaran"></div>
                 <Image
@@ -32,7 +32,7 @@ export default function Home() {
                 initial={{ opacity:0, x:-50 }}
                 whileInView={{ opacity:1, x:0 }}
                 transition={{ duration:0.6 }}
-                viewport={{ amount:0.4, once:false }}
+                viewport={{ amount:0.4, once:true }}
             >
                 <div className="heading">
                     <h1>Yayasan Al-Ishlah</h1>

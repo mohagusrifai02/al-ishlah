@@ -74,14 +74,14 @@ export default function Blog(){
                     initial={{ opacity:0, x:-50 }}
                     whileInView={{ opacity:1, x:0 }}
                     transition={{ duration:0.6 }}
-                    viewport={{ amount: 0.4, once:false }}
+                    viewport={{ amount: 0.4, once:true }}
                 >Portal Berita</motion.h2>
                 <motion.div 
                     className="sub-deskripsi"
                     initial={{ opacity:0, y:50 }}
                     whileInView={{ opacity:1, y:0 }}
                     transition={{ duration:0.6 }}
-                    viewport={{ amount:0.4, once:false }}>
+                    viewport={{ amount:0.4, once:true }}>
                     <Image src="/aguspemuda.png" alt="profile" width={100} height={100} className="img" />
                     <div className="deskripsi-title">
                         <h4>Moh agus rifai</h4>

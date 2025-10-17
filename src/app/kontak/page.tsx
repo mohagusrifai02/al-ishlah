@@ -18,7 +18,7 @@ const Kontak =()=>{
                     referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div className="deskripsi">
-                    <div className="title">
+                    <div className="title-kontak">
                         <h1>Contact Us</h1>
                         <h3>Yayasan Al-Ishlah</h3>
                     </div>
