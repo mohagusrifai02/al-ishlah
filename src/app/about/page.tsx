@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { AnimatedCounter, SantriPutra, SantriPutri, PengurusPutra, PengurusPutri } from '@/components/AnimatedCounter';
+import Link from 'next/link';
 
 const About =()=>{
     return (
@@ -14,37 +15,26 @@ const About =()=>{
                 transition={{ duration:0.6 }}
                 viewport={{ amount:0.4, once:false }}
             >
-                <div className="book">
-                    <div className="cover">
-                        <h1>Mukaddimah book</h1>
-                        <Image 
-                            src='/logo.jpeg'
-                            alt='logo'
-                            width={200}
-                            height={200}
-                        />
-                    </div>
-                    <div className="page"></div>
-                    <div className="page"></div>
-                    <div className="page"></div>
-                    <div className="page"></div>
-                    <div className="page img-page">
-                        <Image 
-                            className='img'
-                            src='/mbakmbak.jpg'
-                            alt='mbak'
-                            width={150}
-                            height={150}
-                        />
-                    </div>
-                    <div className="last-page">
-                        <div className="title">
-                            <h1>About Us</h1>
-                            <h3>Yayasan Al-Ishlah</h3>
+                <div className="hero-about">
+                    <div className="deskripsi">
+                        <div className="logo">
+                            <Image 
+                            src='/alishlah.png'
+                            alt='hidayatullah'
+                            width={100}
+                            height={100}
+                            />
+                            <Image 
+                                src='/logo.jpeg'
+                                alt='alishlah'
+                                width={70}
+                                height={70}
+                            />
                         </div>
-                        <h3>Yayasan Al-Ishlah bergerak di bidang pendidikan, dakwah, dan sosial, berfokus pada pembinaan generasi berakhlak serta kepedulian terhadap anak yatim, piatu, dan dhuafa melalui program berkelanjutan.</h3>
+                        <h1>Tentang Kami</h1>
+                        <p>Pesantren Al-Ishlah didirikan pada tahun 1995 dengan tujuan memberikan pendidikan agama dan umum yang berkualitas kepada generasi muda. Kami berkomitmen untuk mencetak insan yang berakhlak mulia, berilmu, dan siap menghadapi tantangan zaman.</p>
+                        <Link href="/kontak" className='tbl-kontak'>Hubungi Kami</Link>
                     </div>
-                    <div className="back-cover"></div>
                 </div>
             </motion.div>
             <div className="title">

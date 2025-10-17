@@ -34,7 +34,7 @@ export default function Home() {
                 transition={{ duration:0.6 }}
                 viewport={{ amount:0.4, once:false }}
             >
-                <div className="title">
+                <div className="heading">
                     <h1>Yayasan Al-Ishlah</h1>
                     <h3>Hidayatullah Kabupaten Tegal</h3>
                 </div>
@@ -42,8 +42,8 @@ export default function Home() {
             </motion.div>
     </div>
         <About />
-        <Program />
         <Blog />
+        <Program />
         <Kontak />
     </>
   );
