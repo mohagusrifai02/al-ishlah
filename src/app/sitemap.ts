@@ -11,5 +11,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: 'https://www.alishlahtegal.net/blog',
       lastModified: new Date(),
     },
+    {
+      url:'https://www.alishlahtegal.net/about',
+      lastModified: new Date(),
+    },
+    {
+      url:'https://www.alishlahtegal.net/kontak',
+      lastModified: new Date(),
+    }
   ]
 }
