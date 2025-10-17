@@ -179,7 +179,8 @@ nav ul li a{
     justify-content: center;
     align-items: center;
     gap: 10px;
-    perspective: 1000px;
+    background-color: #167448;
+    padding-bottom: 20px;
 }
 
 .container_about .hero-about{
@@ -1104,7 +1105,7 @@ nav ul li a{
        flex-direction: column;
     }
     .container_about .hero-about .deskripsi{
-    width: 100%;
+    width: 90%;
 }
 
 
