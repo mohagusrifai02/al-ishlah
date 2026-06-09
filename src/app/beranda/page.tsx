@@ -6,7 +6,6 @@ import Pagination from "../blog/pagination";
 import { useRouter } from "next/navigation";
 import ProtectedRoute from "@/components/protectedroute";
 import Image from "next/image";
-import { useCallback } from "react";
 
 
 type Blog = {
@@ -94,21 +93,21 @@ const Beranda = () => {
 };
 
 
-const fetchBlog = useCallback(async () => {
-  try {
-    const response = await axios.get(
-      `https://api-alishlah-production.up.railway.app/api/auth/post`
-    );
-    setBlogs(response.data.posts);
-    setTotalPages(response.data.totalPages);
-  } catch (error) {
-    console.error('Error get data:', error);
-  }
-}, []);
+  const fetchBlog = async () => {
+    try {
+      const response = await axios.get(
+        'https://api-alishlah-production.up.railway.app/api/auth/post'
+      );
+      setBlogs(response.data.posts);
+      setTotalPages(response.data.totalPages);
+    } catch (error) {
+      console.error('Error get data:', error);
+    }
+  };
 
 useEffect(() => {
   fetchBlog();
-}, [currentPage, refreshKey, fetchBlog]);
+}, [currentPage, refreshKey]);
 
   const hapusBlog = async (id: string) => {
     const konfirmasi = window.confirm('Apakah Anda yakin akan menghapus ini?');

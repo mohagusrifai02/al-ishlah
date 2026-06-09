@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import Pagination from "./pagination";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import DonationCard from "./donation-card";
 
 type Blog ={
     _id:string;
@@ -30,7 +31,7 @@ export default function Blog(){
     useEffect(()=>{
         fetchItem();
     },[currentPage]);
-    
+
     useEffect(()=>{
         if (!Array.isArray(items) || items.length === 0) return;
 
@@ -128,6 +129,7 @@ export default function Blog(){
                     />
                 </div>
             </div>
+            <DonationCard />
         </>
     )
 }
