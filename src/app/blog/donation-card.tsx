@@ -43,7 +43,7 @@ const DonationCard = () => {
         try {
             console.log("Sending payload:", payload);
             
-            const response = await axios.post("http://localhost:8000/api/auth/checkout", payload);
+            const response = await axios.post("https://api-alishlah-production.up.railway.app/api/auth/checkout", payload);
 
             // Asumsi API mengembalikan URL pembayaran (seperti Midtrans/Stripe)
             if (response.data.redirect_url) {
